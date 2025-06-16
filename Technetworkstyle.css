@@ -1703,3 +1703,233 @@ transform: scale(1.03);
     background-color: #2980b9;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/* ===== MOBILE RESPONSIVE FIXES ===== */
+@media (max-width: 768px) {
+    /* General Layout Adjustments */
+    body {
+        padding: 0;
+        font-size: 16px;
+    }
+    
+    .main-content {
+        padding: 1rem;
+        margin: 0 auto;
+    }
+    
+    /* Header & Navigation */
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .left, .right {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    
+    .tech-heading {
+        font-size: 2rem;
+        margin: 10px 0;
+    }
+    
+    .in-text {
+        font-size: 1.5rem;
+        top: -5px;
+    }
+    
+    /* Navigation Menu */
+    .ulist {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .ulist li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .ulist a {
+        padding: 12px 0;
+    }
+    
+    /* Content Sections */
+    .section-box, 
+    .about-box, 
+    .ourteam, 
+    .contact-details,
+    .case-studies,
+    .tech-stack,
+    .faq,
+    .partners {
+        margin: 1rem 0;
+        padding: 1.5rem;
+        width: auto;
+    }
+    
+    /* Team Table */
+    .ourteam table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    /* Contact Form */
+    .contact-form-section {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Service Grids */
+    .services-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Case Studies */
+    .case-studies {
+        margin: 1rem 0;
+    }
+    
+    .case-study-results {
+        padding-left: 1rem;
+    }
+    
+    /* Tech Stack */
+    .tech-stack {
+        margin: 1rem 0;
+    }
+    
+    /* FAQ */
+    .faq {
+        margin: 1rem 0;
+    }
+    
+    /* Partners */
+    .partners {
+        margin: 1rem 0;
+    }
+    
+    /* Value Cards */
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Hover Effects - Disable transforms on mobile */
+    .service-category:hover,
+    .service-type:hover,
+    .contact-details:hover,
+    .about-box:hover,
+    .ourteam:hover,
+    .case-studies:hover,
+    .tech-stack:hover,
+    .faq:hover,
+    .partners:hover {
+        transform: none;
+    }
+    
+    /* Mobile-specific adjustments for hover states */
+    .contact-details:hover,
+    .about-box:hover,
+    .ourteam:hover,
+    .case-studies:hover,
+    .tech-stack:hover,
+    .faq:hover,
+    .partners:hover {
+        background-color: #f8f9fa;
+        color: #333;
+    }
+    
+    .contact-details:hover h2,
+    .about-box:hover h2,
+    .ourteam:hover h2,
+    .case-studies:hover h2,
+    .tech-stack:hover h2,
+    .faq:hover h2,
+    .partners:hover h2 {
+        color: #2c3e50 !important;
+    }
+    
+    .contact-details:hover p,
+    .about-box:hover p,
+    .case-studies:hover p,
+    .faq:hover p {
+        color: #333 !important;
+    }
+}
+
+/* ===== SMALLER MOBILE DEVICES (Optional) ===== */
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Table cells */
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    /* Contact info grid */
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Reduce padding in cards */
+    .service-category, 
+    .service-type, 
+    .value-card,
+    .contact-method {
+        padding: 1rem;
+    }
+}
+
+/* ===== TABLET VIEW (Optional) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Adjustments for tablet-sized screens */
+    .main-content {
+        padding: 1.5rem;
+    }
+    
+    .services-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Slightly reduce font sizes */
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+}
