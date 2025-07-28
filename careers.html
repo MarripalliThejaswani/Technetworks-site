@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at Technetworks | Join Our Team</title>
+    <meta name="description" content="Explore exciting career opportunities in IT and call center services at Technetworks">
+    <link rel="stylesheet" href="Technetworkstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional Career-Specific Styles */
+        .careers-hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), 
+                        url('images/careers-bg.jpg');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+        
+        .job-filters {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid #3498db;
+            background: transparent;
+            color: #3498db;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .job-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .job-type {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+        }
+        
+        .job-apply-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .job-apply-btn:hover {
+            background: #2980b9;
+        }
+        
+        .benefits-section {
+            background: #f8f9fa;
+            padding: 30px 0;
+            margin: 60px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-radius: 10px;
+            text-align: center;
+            align-items: center;
+
+        }
+        .benefits-section:hover {
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            transform: scale(1.02);
+        }
+        .benefits-section:hover h2 {
+            color: white;
+        }
+        .benefits-section:hover h3{
+            color: black;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+         #open-positions {
+            margin: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            text-align: center;
+            align-items: center;
+            border-radius: 10px;
+            padding-bottom: 10px;
+            padding-left: 7px;
+            padding-right: 7px;
+         }
+         #open-positions:hover {
+            color: white;
+            background-color: black;
+            transform: scale(1.02);
+            border-radius: 10px;
+         }
+         #open-positions:hover h2{
+            color: white !important;
+        
+         }
+         #open-positions:hover h3{
+            color: black !important;
+         }
+         .container-section{
+            background: #f8f9fa;
+            padding: 30px 0;
+            margin: 60px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-radius: 10px;
+            text-align: center;
+            align-items: center;
+            color: black;
+         }
+         .container-section p {
+            color: black;
+         }
+          .container-section:hover {
+            color: white;
+            background-color: black;
+            transform: scale(1.02);
+            border-radius: 10px;
+         }
+         .container-section:hover h2 {
+            color: white;
+         }
+         .container-section:hover p {
+            color: white;
+         }
+         .cta-button {
+            color: white;
+         }
+         .cta-button1:hover {
+            color: white;
+         }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="header">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <h1>Technetworks.in</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html" class="active">Careers</a></li>
+                 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Careers Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="careers-hero">
+            <div class="container">
+                <h1 class="slide-in">Build Your Future With Us</h1>
+                <h3 class="fade-in">Join our team of IT and customer service innovators</h3>
+                <a href="#open-positions" class="cta-button">View Open Positions</a>
+            </div>
+        </section>
+
+        <!-- Job Listings -->
+        <section class="container" id="open-positions">
+            <h2>Current Openings</h2>
+            
+            <div class="job-filters">
+                <button class="filter-btn active" data-filter="all">All Positions</button>
+                <button class="filter-btn" data-filter="it">IT Services</button>
+                <button class="filter-btn" data-filter="call-center">Call Center</button>
+                <button class="filter-btn" data-filter="hr">HR & Admin</button>
+            </div>
+            
+            <div class="jobs-grid">
+                <!-- Job 1 -->
+                <div class="job-card" data-category="it">
+                    <span class="job-type">Full-time</span>
+                    <h3>Senior Cloud Engineer</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bangalore | <i class="fas fa-briefcase"></i> 5+ years experience</p>
+                    <p>Design and implement cloud infrastructure solutions for enterprise clients...</p>
+                    <a href="cloud-engineer-application.html" class="job-apply-btn">Apply Now</a>
+                </div>
+                
+                <!-- Job 2 -->
+                <div class="job-card" data-category="call-center">
+                    <span class="job-type">Full-time</span>
+                    <h3>Call Center Team Lead</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Hyderabad | <i class="fas fa-briefcase"></i> 3+ years experience</p>
+                    <p>Manage a team of 15 customer support representatives for our e-commerce clients...</p>
+                    <a href="team-lead-application.html" class="job-apply-btn">Apply Now</a>
+                </div>
+                
+                <!-- Job 3 -->
+                <div class="job-card" data-category="it">
+                    <span class="job-type">Internship</span>
+                    <h3>IT Support Intern</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Chennai | <i class="fas fa-briefcase"></i> Freshers welcome</p>
+                    <p>Learn enterprise IT infrastructure while providing Level 1 support to clients...</p>
+                    <a href="it-intern-application.html" class="job-apply-btn">Apply Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2>Why Join Technetworks?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Training & Development</h3>
+                        <p>Continuous learning programs and certification sponsorships</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Health Benefits</h3>
+                        <p>Comprehensive medical insurance for you and your family</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Flexible Work</h3>
+                        <p>Hybrid work models for eligible positions</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Career Growth</h3>
+                        <p>Clear promotion paths and leadership opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application CTA -->
+        <section class="container-section" style="text-align: center; margin: 60px 0;">
+            <h2>Don't See Your Perfect Role?</h2>
+            <p>We're always looking for talented professionals. Send us your resume!</p>
+            <a href="contact.html#general-application" class="cta-button1">Submit General Application</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-section">
+                <h3>Technetworks.in</h3>
+                <p>Your trusted IT and call center solutions partner</p>
+            </div>
+             <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Bangalore, Karnataka</p>
+                <p>info@technetworks.in</p>
+                <p>+91 9876543210</p>
+            </div>
+        <p>&copy; 2025 Technetworks.in. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Job Filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const jobCards = document.querySelectorAll('.job-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter jobs
+                    const filter = button.dataset.filter;
+                    jobCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

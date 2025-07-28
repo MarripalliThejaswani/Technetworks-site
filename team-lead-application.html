@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Center Team Lead Application</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .form-section h2 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .logo11 {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="careers.html" class="logo11"><h1>Call Center Team Lead Application</h1></a>
+        <form action="/submit-application" method="POST">
+            
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Professional Experience</h2>
+                <div class="form-group">
+                    <label for="call-center-exp">Years of Call Center Experience</label>
+                    <select id="call-center-exp" name="call-center-exp" required>
+                        <option value="">Select...</option>
+                        <option value="1-2">1-2 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5+">5+ years</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="leadership-exp">Years of Leadership/Supervisory Experience</label>
+                    <select id="leadership-exp" name="leadership-exp" required>
+                        <option value="">Select...</option>
+                        <option value="none">None</option>
+                        <option value="1-2">1-2 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5+">5+ years</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="current-role">Current Position</label>
+                    <input type="text" id="current-role" name="current-role" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="team-size">Current Team Size (if applicable)</label>
+                    <input type="number" id="team-size" name="team-size" min="0">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Call Center Specific Skills</h2>
+                <div class="form-group">
+                    <label for="systems">Call Center Systems You're Proficient With (e.g., Five9, Nice, Salesforce)</label>
+                    <input type="text" id="systems" name="systems" placeholder="List systems separated by commas">
+                </div>
+                
+                <div class="form-group">
+                    <label for="metrics">Key Metrics You've Managed (e.g., AHT, CSAT, FCR)</label>
+                    <input type="text" id="metrics" name="metrics" placeholder="Average Handle Time, Customer Satisfaction, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="coaching">Describe Your Coaching Approach for Agents</label>
+                    <textarea id="coaching" name="coaching" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="escalation">How You Handle Customer Escalations</label>
+                    <textarea id="escalation" name="escalation" required></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Additional Information</h2>
+                <div class="form-group">
+                    <label for="why-apply">Why Are You Interested in This Team Lead Position?</label>
+                    <textarea id="why-apply" name="why-apply" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="strengths">What Are Your Greatest Strengths as a Potential Team Lead?</label>
+                    <textarea id="strengths" name="strengths" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="challenges">Describe a Challenging Situation You Faced in a Call Center and How You Resolved It</label>
+                    <textarea id="challenges" name="challenges" required></textarea>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

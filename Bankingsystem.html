@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System Upgrade | Technetworks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d7a;
+            --secondary: #ff6b00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Project Hero */
+        .project-hero {
+            height: 60vh;
+            min-height: 500px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero .container {
+            z-index: 2;
+            width: 100%;
+        }
+        
+        .project-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .project-hero .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        /* Project Overview */
+        .project-overview {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .project-overview h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .project-overview p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+        
+        .project-meta {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .meta-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .meta-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .meta-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Key Results */
+        .key-results {
+            margin-top: 3rem;
+        }
+        
+        .key-results h3 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .result-card {
+            background: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .result-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .result-card .number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Project Challenge */
+        .project-challenge {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .project-challenge h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .project-challenge ul {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style-type: none;
+        }
+        
+        .project-challenge li {
+            background: var(--light);
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-left: 5px solid var(--secondary);
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .project-challenge li:before {
+            content: "!";
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .shadow-img {
+            margin-top: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Project Solution */
+        .project-solution {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+        
+        .project-solution h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 5rem;
+            font-weight: bold;
+            color: rgba(0,86,179,0.05);
+            line-height: 1;
+        }
+        
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .step p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* Project Tech */
+        .project-tech {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .project-tech h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tech-badges span {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-badges span:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Testimonial */
+        .project-testimonial {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        blockquote {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            position: relative;
+            padding: 0 2rem;
+        }
+        
+        blockquote:before, blockquote:after {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(255,255,255,0.2);
+            position: absolute;
+        }
+        
+        blockquote:before {
+            top: -1rem;
+            left: 0;
+        }
+        
+        blockquote:after {
+            bottom: -3rem;
+            right: 0;
+        }
+        
+        blockquote footer {
+            margin-top: 2rem;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .grid-2-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero {
+                height: auto;
+                padding: 8rem 0;
+            }
+            
+            .project-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .project-overview, .project-challenge, 
+            .project-solution, .project-tech, 
+            .project-testimonial {
+                padding: 3rem 0;
+            }
+            
+            blockquote {
+                font-size: 1.2rem;
+            }
+        }
+        .logo1{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation would go here -->
+
+    <main class="project-details">
+        <section class="project-hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+            <div class="container">
+                <a href="portfolio.html" class="logo1"><h1>Core Banking System Modernization</h1></a>
+                <p class="subtitle">For India's 3rd Largest Private Bank</p>
+            </div>
+        </section>
+
+        <section class="project-overview">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div>
+                        <h2>Project Overview</h2>
+                        <p>Led the transformation of a legacy banking platform to a modern, cloud-native core banking system serving 8M+ customers with 99.99% uptime. The new system enabled real-time transactions, reduced operational costs by 40%, and provided the foundation for digital banking services.</p>
+                    </div>
+                    <div class="project-meta">
+                        <div class="meta-card">
+                            <h3>Client</h3>
+                            <p>National Trust Bank (Confidential)</p>
+                        </div>
+                        <div class="meta-card">
+                            <h3>Duration</h3>
+                            <p>18 Months</p>
+                        </div>
+                        <div class="meta-card">
+                            <h3>Team Size</h3>
+                            <p>45 Engineers</p>
+                        </div>
+                        <div class="meta-card">
+                            <h3>My Role</h3>
+                            <p>Lead Solution Architect</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-results">
+                    <h3>Key Results</h3>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <i class="fas fa-bolt"></i>
+                            <span class="number">300%</span>
+                            <span>Faster Transaction Processing</span>
+                        </div>
+                        <div class="result-card">
+                            <i class="fas fa-rupee-sign"></i>
+                            <span class="number">40%</span>
+                            <span>Reduction in Operational Costs</span>
+                        </div>
+                        <div class="result-card">
+                            <i class="fas fa-clock"></i>
+                            <span class="number">99.99%</span>
+                            <span>System Uptime SLA</span>
+                        </div>
+                        <div class="result-card">
+                            <i class="fas fa-user-check"></i>
+                            <span class="number">8M+</span>
+                            <span>Customers Migrated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-challenge">
+            <div class="container">
+                <h2>The Challenge</h2>
+                <ul>
+                    <li>Outdated COBOL mainframe system from the 1990s with limited documentation</li>
+                    <li>4-hour daily maintenance windows impacting customer transactions</li>
+                    <li>Inability to integrate with modern payment systems like UPI and IMPS</li>
+                    <li>High risk of data corruption during migration of 25+ years of financial data</li>
+                    <li>Stringent RBI compliance requirements for banking systems</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Legacy banking system" class="shadow-img">
+            </div>
+        </section>
+
+        <section class="project-solution">
+            <div class="container">
+                <h2>Our Solutions</h2>
+                <div class="solution-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Microservices Architecture</h3>
+                        <p>Designed and implemented a modular architecture with 12 independent microservices using Java/Spring Boot, each responsible for specific banking functions (accounts, loans, payments, etc.). Containerized with Docker and orchestrated with Kubernetes for scalability.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Zero-Downtime Migration</h3>
+                        <p>Implemented a dual-write architecture using Apache Kafka to validate the new system against the legacy system in real-time. Developed automated reconciliation tools to ensure data integrity throughout the 6-month migration period.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>RBI Compliance & Security</h3>
+                        <p>Built comprehensive audit trails, implemented end-to-end encryption with Hashicorp Vault, and designed role-based access controls meeting all RBI cybersecurity guidelines. Conducted third-party security audits before go-live.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-tech">
+            <div class="container">
+                <h2>Technologies Used</h2>
+                <div class="tech-badges">
+                    <span>Java Spring Boot</span>
+                    <span>Kubernetes</span>
+                    <span>Apache Kafka</span>
+                    <span>PostgreSQL</span>
+                    <span>Hashicorp Vault</span>
+                    <span>Docker</span>
+                    <span>Prometheus</span>
+                    <span>Grafana</span>
+                    <span>React</span>
+                    <span>AWS</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-testimonial">
+            <div class="container">
+                <blockquote>
+                    "Technetworks delivered the most seamless core banking upgrade in our history, completing the 18-month migration with zero customer impact and achieving all performance targets ahead of schedule."
+                    <footer>- Rajiv Sharma, Chief Technology Officer, National Trust Bank</footer>
+                </blockquote>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer would go here -->
+
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.step, .result-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if(elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state for animated elements
+            const animatedElements = document.querySelectorAll('.step, .result-card');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease-out';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>

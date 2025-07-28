@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Support Solutions | Technetworks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b00;
+            --primary-dark: #e05d00;
+            --secondary: #6c63ff;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Project Hero */
+        .project-hero {
+            height: 70vh;
+            min-height: 600px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+        }
+        
+        .project-hero .container {
+            z-index: 2;
+            width: 100%;
+            color: white;
+        }
+        
+        .project-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .project-hero .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        /* Project Overview */
+        .project-overview {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .project-overview h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .project-overview p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            line-height: 1.8;
+            max-width: 90%;
+        }
+        
+        .project-meta {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            align-self: start;
+        }
+        
+        .project-meta h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .project-meta ul {
+            list-style-type: none;
+        }
+        
+        .project-meta li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .project-meta li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* Support Stats */
+        .support-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .stat {
+            background: white;
+            padding: 2.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        /* Project Solution */
+        .project-solution {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .project-solution h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .solution-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .highlight-card {
+            background: var(--light);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-card:hover i {
+            transform: scale(1.1);
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .highlight-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        /* Tech Logos */
+        .project-tech {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .project-tech h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .tech-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .tech-logos img {
+            height: 60px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-logos img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Testimonial */
+        .project-testimonial {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        blockquote {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            position: relative;
+            padding: 0 2rem;
+        }
+        
+        blockquote:before, blockquote:after {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(255,255,255,0.2);
+            position: absolute;
+        }
+        
+        blockquote:before {
+            top: -1rem;
+            left: 0;
+        }
+        
+        blockquote:after {
+            bottom: -3rem;
+            right: 0;
+        }
+        
+        blockquote footer {
+            margin-top: 2rem;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .grid-2-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-overview p {
+                max-width: 100%;
+            }
+            
+            .project-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero {
+                height: auto;
+                padding: 8rem 0;
+            }
+            
+            .project-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .project-overview, .project-solution, 
+            .project-tech, .project-testimonial {
+                padding: 3rem 0;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            blockquote {
+                font-size: 1.2rem;
+            }
+        }
+        .logo2 {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation would go here -->
+
+    <main class="project-details">
+        <section class="project-hero" style="background: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+            <div class="container">
+                <a href="portfolio.html" class="logo2"><h1>24/7 E-commerce Customer Support</h1></a>
+                <p class="subtitle">For India's Fastest Growing Online Retailer</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="number">15,000+</span>
+                        <span>tickets/month</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="number">92%</span>
+                        <span>CSAT score</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-overview">
+            <div class="container">
+                <div class="grid-2-col">
+                    <div>
+                        <h2>Project Overview</h2>
+                        <p>Transformed customer support operations for a leading Indian e-commerce platform, implementing AI-driven solutions and multilingual support to handle 15,000+ monthly inquiries across three languages. Our comprehensive approach reduced resolution times by 58% while increasing customer satisfaction scores by 35 points.</p>
+                        <div class="impact-statement">
+                            <p><strong>Key Impact:</strong> Enabled 24/7 support coverage while reducing operational costs by 30% through intelligent automation and optimized workflows.</p>
+                        </div>
+                    </div>
+                    <div class="project-meta">
+                        <h3>Performance Metrics</h3>
+                        <ul>
+                            <li><strong>CSAT Improvement:</strong> +35 points (57 to 92)</li>
+                            <li><strong>First Response Time:</strong> Reduced from 8h to 22m</li>
+                            <li><strong>Resolution Time:</strong> 58% reduction (48h to 20h)</li>
+                            <li><strong>Self-Service Rate:</strong> Increased to 42%</li>
+                            <li><strong>Agent Productivity:</strong> +65% queries resolved/day</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="support-stats">
+                    <div class="stat">
+                        <div class="stat-number" data-target="15000">0</div>
+                        <div class="stat-label">Monthly Tickets</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-target="92">0</div>
+                        <div class="stat-label">CSAT Score</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">Languages Supported</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="stat-label">Hour Coverage</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-solution">
+            <div class="container">
+                <h2>Our Innovative Solutions</h2>
+                <div class="solution-highlights">
+                    <div class="highlight-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI-Powered Tier 1 Support</h3>
+                        <p>Implemented NLP-powered chatbots that resolved 40% of routine inquiries with 89% accuracy, freeing human agents for complex issues. Integrated with knowledge base for instant answers to common questions.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fas fa-globe-asia"></i>
+                        <h3>Multilingual Support Team</h3>
+                        <p>Trained 45 agents across Hindi, English, and Tamil with cultural competency training. Implemented language routing to connect customers with native-speaking representatives.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Real-time Analytics Dashboard</h3>
+                        <p>Developed custom dashboards tracking 15+ KPIs in real-time, enabling proactive identification of trending issues and immediate process adjustments.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Omnichannel Integration</h3>
+                        <p>Unified support across email, chat, social media, and phone with complete conversation history visibility for all agents regardless of channel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-tech">
+            <div class="container">
+                <h2>Technology Stack</h2>
+                <div class="tech-logos">
+                    <!-- These would be actual image files in production -->
+                    <div class="tech-logo-item">
+                        <i class="fab fa-zendesk fa-4x"></i>
+                        <span>Zendesk</span>
+                    </div>
+                    <div class="tech-logo-item">
+                        <i class="fas fa-robot fa-4x"></i>
+                        <span>Dialogflow</span>
+                    </div>
+                    <div class="tech-logo-item">
+                        <i class="fas fa-chart-bar fa-4x"></i>
+                        <span>Looker</span>
+                    </div>
+                    <div class="tech-logo-item">
+                        <i class="fab fa-salesforce fa-4x"></i>
+                        <span>Service Cloud</span>
+                    </div>
+                    <div class="tech-logo-item">
+                        <i class="fas fa-database fa-4x"></i>
+                        <span>BigQuery</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-testimonial">
+            <div class="container">
+                <blockquote>
+                    "Technetworks transformed our customer support from a cost center to a competitive advantage. Their solutions helped us achieve industry-leading satisfaction scores while handling triple the ticket volume with the same team size."
+                    <footer>- Priya Mehta, VP of Customer Experience, UrbanKart</footer>
+                </blockquote>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer would go here -->
+
+    <script>
+        // Animate statistics on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Number counting animation
+            const animateCounters = function() {
+                document.querySelectorAll('.stat-number').forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const increment = target / 100;
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        stat.textContent = Math.floor(current);
+                        if (current >= target) {
+                            stat.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, 20);
+                });
+            };
+            
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('support-stats')) {
+                            animateCounters();
+                        }
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe elements that should animate
+            document.querySelectorAll('.highlight-card, .support-stats, .tech-logos').forEach(el => {
+                observer.observe(el);
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease-out';
+            });
+            
+            // Trigger animations for elements already in view
+            const checkElementsInView = function() {
+                document.querySelectorAll('.highlight-card, .support-stats, .tech-logos').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.8) {
+                        el.classList.add('animated');
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        if (el.classList.contains('support-stats')) {
+                            animateCounters();
+                        }
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', checkElementsInView);
+            checkElementsInView(); // Run once on load
+        });
+    </script>
+</body>
+</html>

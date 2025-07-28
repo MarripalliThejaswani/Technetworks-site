@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Technetworks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #1a365d;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo h1 {
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        .logo-link {
+            text-decoration: none;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-list li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-list a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .nav-list a.active {
+            background-color: #4299e1;
+            color: white;
+        }
+
+        /* Office Slider */
+        .office-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 1400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem;
+            color: white;
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-description {
+            max-width: 600px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .slider-btn {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Main content styles */
+        .main-content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .about-section, .values-section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            color: #1a365d;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #4299e1;
+            border-radius: 2px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #4299e1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            width: 50%;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4299e1;
+            top: 30px;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .timeline-item h3 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #4a5568;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            color: #4299e1;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Footer styles */
+        footer {
+            background: #1a365d;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #4299e1;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Live chat */
+        .live-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            background: #3182ce;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: 20px;
+            }
+            
+            .office-slider {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-list {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-list li {
+                margin: 0.5rem;
+            }
+            
+            .office-slider {
+                height: 350px;
+            }
+            
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .office-slider {
+                height: 300px;
+            }
+            
+            .slide-overlay {
+                padding: 1rem;
+            }
+            
+            .slide-title {
+                font-size: 1.4rem;
+            }
+            
+            .slide-description {
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <a href="index.html" class="logo-link"><h1>Technetworks.in</h1></a>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                   <li><a href="blog.html">Blog</a></li>
+                   <li><a href="contact.html">Contact</a></li>
+                   <li><a href="careers.html">Careers</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Office Slider Section -->
+    <section class="office-slider">
+        <div class="slides-container">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2070&auto=format&fit=crop" alt="Corporate Office">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Bangalore Headquarters</h3>
+                    <p class="slide-description">Our modern corporate office where innovation meets collaboration</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1932&auto=format&fit=crop" alt="Office Workspace">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Collaborative Workspaces</h3>
+                    <p class="slide-description">Designed for creativity and teamwork</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop" alt="Meeting Room">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Innovation Labs</h3>
+                    <p class="slide-description">Where our teams brainstorm and create next-gen solutions</p>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Call Center">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Customer Support Center</h3>
+                    <p class="slide-description">24/7 customer service with state-of-the-art technology</p>
+                </div>
+            </div>
+            
+            <!-- Slide 5 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop" alt="Training Room">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Training Facility</h3>
+                    <p class="slide-description">Continuous learning and skill development for our team</p>
+                </div>
+            </div>
+            
+            <!-- Slide 6 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=2069&auto=format&fit=crop" alt="Office Lounge">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Relaxation Spaces</h3>
+                    <p class="slide-description">Recharge zones for our hardworking team members</p>
+                </div>
+            </div>
+            
+            <!-- Slide 7 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Data Center">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Data Center</h3>
+                    <p class="slide-description">Secure and reliable infrastructure for our cloud solutions</p>
+                </div>
+            </div>
+            
+            <!-- Slide 8 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2080&auto=format&fit=crop" alt="Server Room">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Server Operations</h3>
+                    <p class="slide-description">High-performance computing for enterprise solutions</p>
+                </div>
+            </div>
+            
+            <!-- Slide 9 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1932&auto=format&fit=crop" alt="Team Collaboration">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Team Collaboration</h3>
+                    <p class="slide-description">Working together to solve complex challenges</p>
+                </div>
+            </div>
+            
+            <!-- Slide 10 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Conference Room">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Strategy Meetings</h3>
+                    <p class="slide-description">Planning the future of technology solutions</p>
+                </div>
+            </div>
+            
+            <!-- Slide 11 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070&auto=format&fit=crop" alt="Office Cafeteria">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Cafeteria & Dining</h3>
+                    <p class="slide-description">Healthy meals to fuel innovation and productivity</p>
+                </div>
+            </div>
+            
+            <!-- Slide 12 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop" alt="Office Event">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Team Celebrations</h3>
+                    <p class="slide-description">Recognizing achievements and milestones together</p>
+                </div>
+            </div>
+            
+            <!-- Slide 13 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Office Event">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Company Events</h3>
+                    <p class="slide-description">Building our culture and community</p>
+                </div>
+            </div>
+            
+            <!-- Slide 14 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop" alt="Research Lab">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Research & Development</h3>
+                    <p class="slide-description">Exploring cutting-edge technologies and solutions</p>
+                </div>
+            </div>
+            
+            <!-- Slide 15 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1581093458799-ef0d0c87d3d3?q=80&w=2070&auto=format&fit=crop" alt="Office Building">
+                <div class="slide-overlay">
+                    <h3 class="slide-title">Technetworks Campus</h3>
+                    <p class="slide-description">Our state-of-the-art facility in Bangalore</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <div class="slider-nav">
+            <button class="slider-btn prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Dots indicator -->
+        <div class="dots-container">
+            <!-- Dots will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="about-section">
+            <h2>Our Story</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>2015 - Founded</h3>
+                    <p>Started as a small IT solutions provider in Bangalore</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2018 - Expanded Services</h3>
+                    <p>Added call center operations and cloud solutions</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2020 - Staffing Services</h3>
+                    <p>Your Trusted Staffing Solutions Partner</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2021 - Placement and Training</h3>
+                    <p>Your Career Success Starts Here!</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2023 - Award Winning</h3>
+                    <p>Recognized as Top IT Service Provider by Tech Magazine</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>Constantly evolving our solutions</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Integrity</h3>
+                    <p>Honest and transparent dealings</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Client Focus</h3>
+                    <p>Your success is our priority</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Technetworks.in</h3>
+                <p>Your trusted IT and call center solutions partner</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Bangalore, Karnataka</p>
+                <p>info@technetworks.in</p>
+                <p>+91 9876543210</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="service.html" style="color: #e2e8f0; text-decoration: none;">Services</a></p>
+                <p><a href="portfolio.html" style="color: #e2e8f0; text-decoration: none;">Portfolio</a></p>
+                <p><a href="careers.html" style="color: #e2e8f0; text-decoration: none;">Careers</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Technetworks.in. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="live-chat">
+        <button class="chat-btn">
+            <i class="fas fa-comment-dots"></i> Live Chat
+        </button>
+    </div>
+
+    <script>
+        // Slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slidesContainer = document.querySelector('.slides-container');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.slider-btn.prev');
+            const nextBtn = document.querySelector('.slider-btn.next');
+            const dotsContainer = document.querySelector('.dots-container');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Create dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            const dots = document.querySelectorAll('.dot');
+            
+            // Function to go to specific slide
+            function goToSlide(slideIndex) {
+                slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+                currentSlide = slideIndex;
+                
+                // Update active dot
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === slideIndex);
+                });
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                goToSlide(currentSlide);
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                goToSlide(currentSlide);
+            });
+            
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                goToSlide(currentSlide);
+            }, 5000);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                    goToSlide(currentSlide);
+                } else if (e.key === 'ArrowRight') {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    goToSlide(currentSlide);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
