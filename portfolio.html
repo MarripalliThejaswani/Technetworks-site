@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,10 @@
     <link rel="stylesheet" href="Technetworkstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Styles from team-portfolio-updated (copy.html) */
         /* Basic styling */
-         body {
+         html, body {
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrollbar due to 100vw */
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -23,11 +25,262 @@
             padding: 20px;
         }
          
+         /* Existing h1, h2 styles - ensure they don't conflict with new hero section */
          h1, h2 {
             text-align: center;
-            color: white;
-        
+            color: white; /* This will be overridden for the new hero section */
          }
+
+        /* New Introduction Section (Hero) */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 600px; /* Adjust height as needed */
+            /* Using a high-quality, relevant background image */
+            background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff; /* White text for contrast */
+            overflow: hidden; /* Important for containing animations */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the overlay */
+            padding: 20px;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: 3.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+            letter-spacing: 1px;
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            line-height: 1.5;
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #007bff; /* Primary blue for the button */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px; /* Pill-shaped button */
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease; /* Smooth transitions for hover effects */
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4); /* Button shadow */
+            border: 2px solid #007bff;
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        .hero-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: translateY(-5px) scale(1.02); /* Lift and slightly enlarge on hover */
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.6); /* Enhanced shadow on hover */
+            border-color: #0056b3;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Applying animations with delays */
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-in-up-delay {
+            animation: fadeInUp 1s ease-out 0.5s forwards; /* Delayed animation for subtitle */
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.8s ease-out 1s forwards; /* Delayed animation for button */
+        }
+
+        /* Subtle Animated Graphics */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .hero-graphic {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            border-radius: 50%; /* Circle shape */
+            animation: float 6s ease-in-out infinite alternate; /* Floating animation */
+            z-index: 0; /* Behind content and overlay */
+        }
+
+        .graphic-1 {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0.2s; /* Staggered animation */
+            background-color: rgba(0, 123, 255, 0.15); /* Blue tint */
+        }
+
+        .graphic-2 {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 0.8s; /* Staggered animation */
+            background-color: rgba(0, 123, 255, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Blob shape */
+        }
+
+        /* 3D Slider Styles */
+        .slider-section {
+            background-color: #f5f5f5; /* Match body background */
+            padding: 20px 0; /* Add some vertical padding */
+            width: 100%; /* Ensure section itself takes full width */
+        }
+
+        .slider-container {
+            perspective: 1500px; /* More pronounced 3D effect */
+            width: 90vw; /* Full viewport width */
+            height: 550px; /* Increased height for better visibility */
+            margin: 50px auto; /* Center horizontally, maintain vertical margin */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4); /* Stronger shadow */
+            border-radius: 0; /* Remove border-radius for full width appearance */
+            overflow: hidden; /* Important for containing the 3D effect */
+            background-color: #f0f0f0; /* Fallback background */
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear; /* Slower, grander rotation */
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5); /* Fallback/overlay for images */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            border-radius: 8px; /* Maintain rounded corners for individual slides */
+            overflow: hidden;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Positioning and rotating each slide for a 3D effect (4 slides = a square prism) */
+        /* The translateZ value is calculated based on half the width of the slider-container (50vw) */
+        .slide:nth-child(1) { transform: rotateY(0deg) translateZ(50vw); }
+        .slide:nth-child(2) { transform: rotateY(90deg) translateZ(50vw); }
+        .slide:nth-child(3) { transform: rotateY(180deg) translateZ(50vw); }
+        .slide:nth-child(4) { transform: rotateY(270deg) translateZ(50vw); }
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* Responsive adjustments for the hero section */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+            .hero-subtitle {
+                font-size: 1.1em;
+            }
+            .hero-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            .hero-section {
+                min-height: 400px;
+            }
+            .hero-graphic {
+                display: none; /* Hide subtle graphics on smaller screens for cleaner look */
+            }
+            .slider-container {
+                height: 350px; /* Adjust height for smaller screens */
+            }
+            /* translateZ values remain 50vw as width is 100vw */
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2em;
+            }
+            .hero-subtitle {
+                font-size: 0.9em;
+            }
+            .hero-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            .slider-container {
+                height: 250px; /* Adjust height for very small screens */
+            }
+            /* translateZ values remain 50vw as width is 100vw */
+        }
+
+        /* Styles from team-portfolio-updated (copy.html) */
         /* Group photo section */
         .team-group-photo {
             width: 100%;
@@ -90,40 +343,103 @@
             margin-top: 20px;
         }
         
+        /* Flip Card Container */
         .team-member {
-            background-color: #fff;
+            background-color: transparent; /* Make background transparent to see the flip */
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.1s ease;
-            cursor: pointer;
+            perspective: 1000px; /* For 3D effect */
+            height: 350px; /* Fixed height for consistent card size */
+            cursor: pointer; /* Indicate it's interactive */
         }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-        
-        .member-photo {
+
+        /* Inner container for the flip effect */
+        .team-member-inner {
+            position: relative;
             width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .member-info {
-            padding: 15px;
+            height: 100%;
             text-align: center;
+            transition: transform 0.8s; /* Slower transition for a more noticeable flip */
+            transform-style: preserve-3d;
         }
-        
-        .member-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 1.2em;
+
+        /* Front and Back of the card */
+        .team-member-front, .team-member-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 8px; /* Apply border-radius to faces */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+            background-color: #fff; /* Default for front */
+            color: #333; /* Default for front */
         }
-        
-        .member-position {
-            color: #666;
-            font-size: 0.9em;
+
+        .team-member-front {
+            z-index: 2;
+        }
+
+        .team-member-back {
+            background-color: #007bff; /* Blue background for the back */
+            color: #fff;
+            transform: rotateY(180deg); /* Initially hidden */
+        }
+
+        /* Flip on hover */
+        .team-member:hover .team-member-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Styles for back content */
+        .team-member-back .member-name {
+            font-size: 1.5em;
             margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .team-member-back .member-position,
+        .team-member-back .member-email,
+        .team-member-back .member-phone {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .team-member-back .view-details-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #fff;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .team-member-back .view-details-btn:hover {
+            background-color: #e0e0e0;
+            color: #0056b3;
+        }
+
+        /* Adjustments for existing member-photo and member-info */
+        .team-member-front .member-photo {
+            width: 120px; /* Smaller photo on front for better fit */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .team-member-front .member-info {
+            padding: 0; /* Remove padding as it's handled by front/back */
         }
         
         /* Section divider */
@@ -189,7 +505,7 @@
             margin-bottom: 20px;
         }
         
-        .modal-photo {
+    .modal-photo {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -232,10 +548,6 @@
             border-radius: 20px;
             font-size: 0.9em;
         }
-
-
-
-
 
          /* New styles for project stats and upcoming projects */
         .project-stats-section {
@@ -314,6 +626,22 @@
             font-size: 1.1em;
             color: #333;
         }
+        .main-content {
+            margin-top: 0;
+        }
+        .portfolio-main {
+            margin-bottom: 0;
+        }
+        .hero {
+            padding: 50px;
+        }
+        .portfolio-testimonials:hover h2{
+          color: white;
+          background-color: white;
+        }
+        .testimonial{
+            padding-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -323,8 +651,6 @@
             <div class="logo">
                 <a href="index.html" class="logo-link"><h1>Technetworks.in</h1></a>
             </div>
-
-
             <nav>  
                 <ul class="nav-list">
                 <li><a href="home.html">Home</a></li>
@@ -336,27 +662,9 @@
                 <li><a href="careers.html">Careers</a></li>
                 </ul> 
            </nav>
-            <!-- <nav>
-                <ul class="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="dropdown">
-                        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="it-services.html">IT Services</a></li>
-                            <li><a href="call-center.html">Call Center</a></li>
-                            <li><a href="cloud.html">Cloud Solutions</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="get-quote.html" class="cta-button">Get Quote</a></li>
-                </ul>
-            </nav> -->
         </div>
     </header>
 
-    <!-- Portfolio Main Content -->
     <main class="portfolio-main">
         <!-- <section class="portfolio-hero">
             <h2>Our Work Speaks for Itself</h2>
@@ -367,28 +675,77 @@
             <h2 class="slide-in">Our Work Speaks for Itself</h2>
             <p class="fade-in">Explore our successful projects and client solutions</p>
         </section>
+        </main>
+
+    <!-- Portfolio Main Content -->
+    <!-- <main class="portfolio-main"> -->
+        <!-- New Introduction Section -->
+        <!-- <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in-up">Innovate. Create. Inspire.</h1>
+                <p class="hero-subtitle animate-fade-in-up-delay">Crafting Digital Excellence for Tomorrow's World.</p>
+                <a href="#portfolio-grid" class="hero-button animate-scale-in">Explore Our Portfolio</a>
+            </div> -->
+            <!-- Subtle animated graphics -->
+            <!-- <div class="hero-graphic graphic-1"></div>
+            <div class="hero-graphic graphic-2"></div>
+        </section> -->
+
+
+
+         <!-- Technetworks Introduction Section -->
+           <main class="main-content">
+        <div id="about" class="about-box">
+            <h2 style="color: black;">Introduction</h2>
+            <p>Technetworks is a dynamic startup company specializing in comprehensive web design and development services. We cater to a diverse range of industries, including **Education, Hospitals, Travel, E-commerce, and more**. Our mission is to transform your vision into a powerful online presence, crafting bespoke websites that are not only visually appealing but also highly functional, user-friendly, and optimized for performance across all devices. We pride ourselves on delivering innovative digital solutions that drive growth and enhance user experience for businesses of all sizes.</p>
+        </div>
+    </main>
+        <!-- <section class="technetworks-intro container">
+            <h2>About Technetworks</h2>
+            <p>Technetworks is a dynamic startup company specializing in comprehensive web design and development services. We cater to a diverse range of industries, including **Education, Hospitals, Travel, E-commerce, and more**. Our mission is to transform your vision into a powerful online presence, crafting bespoke websites that are not only visually appealing but also highly functional, user-friendly, and optimized for performance across all devices. We pride ourselves on delivering innovative digital solutions that drive growth and enhance user experience for businesses of all sizes.</p>
+        </section> -->
+        <!-- 3D Image Slider Section -->
+        <section class="slider-section"> <!-- Removed .container class -->
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Slider Image 1">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Slider Image 2">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070&auto=format&fit=crop" alt="Slider Image 3">
+                    </div>
+                    <div class="slide">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Slider Image 4">
+                    </div>
+                </div>
+            </div>
+        </section>
 
          <!-- Project Statistics Section -->
         <section class="project-stats-section container">
             <h3>Our Project Milestones</h3>
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="number" id="totalProjectsCount">10</div> <!-- Dynamically updated by JS -->
+                    <div class="number" id="totalProjectsCount">25</div> <!-- Dynamically updated by JS -->
                     <div class="label">Completed Projects</div>
                 </div>
                 <div class="stat-item">
-                    <div class="number">3+</div>
+                    <div class="number">10</div>
                     <div class="label">Upcoming Projects</div>
                 </div>
                 <div class="stat-item">
-                    <div class="number">95%</div>
+                    <div class="number">99%</div>
                     <div class="label">Client Satisfaction</div>
                 </div>
             </div>
         </section>
 
           <!-- Upcoming Projects Section -->
-<!--         <section class="upcoming-projects-section container">
+        <!-- <section class="upcoming-projects-section container">
             <h3>Sneak Peek: Upcoming Projects</h3>
             <ul class="upcoming-projects-list">
                 <li><strong>AI-Powered Chatbot Integration:</strong> Enhancing customer service with advanced AI.</li>
@@ -406,85 +763,11 @@
             <button class="filter-btn" data-filter="education">Educational Services</button>
              <button class="filter-btn" data-filter="transport">Transport Services</button>
             <button class="filter-btn" data-filter="publish">Self-Publishing Services</button>
-
-
         </div>
 
         <!-- Portfolio Grid -->
-        <div class="portfolio-grid">
-            <!-- Project 1 -->
-            <!-- <div class="portfolio-item" data-category="it">
-                <div class="portfolio-img">
-                    <img src="images/Bank.jpg" alt="Banking System Upgrade">
-                    <div class="overlay">
-                        <a href="Bankingsystem.html" class="view-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>Banking System Upgrade</h3>
-                    <p>Core banking system modernization for a leading financial institution</p>
-                    <span class="category-tag">IT Services</span>
-                </div>
-            </div> -->
-
-            <!-- Project 2 -->
-            <!-- <div class="portfolio-item" data-category="call-center">
-                <div class="portfolio-img">
-                    <img src="images/Ecommerce.jpg" alt="E-commerce Support">
-                    <div class="overlay">
-                        <a href="Ecommerce.html" class="view-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>E-commerce Support</h3>
-                    <p>24/7 customer support for a major online retailer</p>
-                    <span class="category-tag">Call Center</span>
-                </div>
-            </div> -->
-
-            <!-- Project 3 -->
-            <!-- <div class="portfolio-item" data-category="cloud">
-                <div class="portfolio-img">
-                    <img src="images/cloud.jpg" alt="Healthcare Cloud Migration">
-                    <div class="overlay">
-                        <a href="Healthcare.html" class="view-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="portfolio-info">
-                    <h3>Healthcare Cloud Migration</h3>
-                    <p>Secure patient data migration to HIPAA-compliant cloud</p>
-                    <span class="category-tag">Cloud Solutions</span>
-                </div>
-            </div> -->
-
-
-           
-<!-- Project 4 - LeadBuzz (Consistent Style) 
-<div class="portfolio-item" data-category="ai it">
-    <div class="portfolio-img">
-        <img src="images/leadbuzz.jpg" alt="LeadBuzz AI Platform">
-        <div class="overlay">
-            <a href="leadbuzz.html" class="view-btn">View Details
-                <!-- <i class="fas fa-robot"></i> View Details 
-            </a>
-        </div>
-    </div>
-    <div class="portfolio-info">
-        <h3>LeadBuzz </h3>
-        <p>Intelligent lead scoring and automated outreach platform</p>
-        <span class="category-tag">IT Services</span>
-        <!-- <div class="project-stats">
-            <span><i class="fas fa-chart-line"></i> 450% Lead Increase</span>
-            <span><i class="fas fa-bolt"></i> 3s Response Time</span>
-            <span><i class="fas fa-clock"></i> 4 Months</span>
-        </div>
-        <div class="tech-used">
-            <span>Python</span>
-            <span>TensorFlow</span>
-            <span>React</span>
-        </div> 
-    </div>
-</div> --><!-- Project 8 -->
+        <div class="portfolio-grid" id="portfolio-grid">
+            <!-- Project 8 -->
             <div class="portfolio-item" data-category="education">
                 <div class="portfolio-img">
                     <img src="https://wallpaperaccess.com/full/2137313.jpg" alt="Techplatform">
@@ -499,7 +782,7 @@
                     <span class="category-tag">Educational Services</span>
                 </div>
             </div>
-  <!-- Project 4 -->
+            <!-- Project 4 -->
             <div class="portfolio-item" data-category="it">
                 <div class="portfolio-img">
                     <img src="https://www.technostation.com/wp-content/uploads/2023/01/Here-is-How-HR-tech-platforms-can.jpg" alt="Techplatform">
@@ -511,42 +794,25 @@
                     <h3>Techplatform</h3>
                     <p>The Intelligent Tech Stack for Outreach Automation</p>
                      <h3 class="slide-in">Developed by Hima Bindu</h3>
-
                     <span class="category-tag">IT Services</span>
                 </div>
             </div>
 
-<!-- Project 5 - ChatBuzz (Consistent Style) -->
-<div class="portfolio-item" data-category="non-it">
-    <div class="portfolio-img">
-        <img src="images/lap.jpg" alt="ChatBuzz Platform">
-        <div class="overlay">
-            <!-- <a href="https://docs.google.com/presentation/d/1HnFxjcsVbPly8yy_yafYDe0vZcSGge02/edit?usp=sharing&ouid=115270442246788920654&rtpof=true&sd=true" class="view-btn">View Details -->
-             <a href="https://chat-officially.github.io/chatbuzz.net" class="view-btn">View Details
-
-                <!-- <i class="fas fa-comments"></i> View Details -->
-            </a>
-        </div>
-    </div>
-    <div class="portfolio-info">
-        <h3>ChatBuzz Pro</h3>
-        <p>Omnichannel customer support platform with intelligent intent detection</p>
-        <h3 class="slide-in">Developed by Bhanu Priya</h3>
-        <span class="category-tag">Non-IT Services</span>
-        <!-- <div class="project-stats">
-            <span><i class="fas fa-headset"></i> 80% Auto-Resolved</span>
-            <span><i class="fas fa-smile"></i> 92% CSAT</span>
-            <span><i class="fas fa-clock"></i> 3 Months</span>
-        </div>
-        <div class="tech-used">
-            <span>NLP</span>
-            <span>Twilio</span>
-            <span>Node.js</span>
-        </div> -->
-    </div>
-</div>
-
-          
+            <!-- Project 5 - ChatBuzz (Consistent Style) -->
+            <div class="portfolio-item" data-category="non-it">
+                <div class="portfolio-img">
+                    <img src="images/lap.jpg" alt="ChatBuzz Platform">
+                    <div class="overlay">
+                        <a href="https://chat-officially.github.io/chatbuzz.net" class="view-btn">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3>ChatBuzz Pro</h3>
+                    <p>Omnichannel customer support platform with intelligent intent detection</p>
+                    <h3 class="slide-in">Developed by Bhanu Priya</h3>
+                    <span class="category-tag">Non-IT Services</span>
+                </div>
+            </div>
             
             <!-- Project 5 -->
             <div class="portfolio-item" data-category="publish">
@@ -570,20 +836,17 @@
                     <img src="images/Picture1.jpg" alt="LeadBuzz Platform">
                     <div class="overlay">
                         <a href="https://harisurya006.github.io/LEADBUZZ_8/" class="view-btn">View Details</a>
-
-                        <!-- <a href="https://docs.google.com/presentation/d/11VCOyLqMoHsLPIl6T5WyWaWaqNyxuMK6/edit?usp=sharing&ouid=115270442246788920654&rtpof=true&sd=true" class="view-btn">View Details</a> -->
                     </div>
                 </div>
                 <div class="portfolio-info">
                     <h3>LeadBuzz</h3>
                     <p>Intelligent lead scoring and automated outreach platform</p>
                     <h3 class="slide-in">Developed by Hari Surya</h3>
-
                     <span class="category-tag">Non-IT Services</span>
                 </div>
             </div>
  
-    <!-- Project 8 -->
+            <!-- Project 8 -->
             <div class="portfolio-item" data-category="health">
                 <div class="portfolio-img">
                     <img src="https://tse2.mm.bing.net/th/id/OIP.a9Xs8_Q1Bnf8gTNxpd2G7QHaEK?pid=Api&P=0&h=220" alt="Techplatform">
@@ -614,7 +877,7 @@
                     <span class="category-tag">Educational Services</span>
                 </div>
             </div>
-   <!-- Project 8 -->
+            <!-- Project 8 -->
             <div class="portfolio-item" data-category="transport">
                 <div class="portfolio-img">
                     <img src="https://wallpaperaccess.com/full/136008.jpg" alt="Techplatform">
@@ -629,14 +892,13 @@
                     <span class="category-tag">Transport Services</span>
                 </div>
             </div>
-
          
-    <!-- Project 8 -->
+            <!-- Project 8 -->
             <div class="portfolio-item" data-category="e-commerce">
                 <div class="portfolio-img">
                     <img src="https://wallpapercave.com/wp/wp3152222.jpg" alt="Techplatform">
                     <div class="overlay">
-                        <a href="https://lakshmisubbu123.github.io/SooperStore/" class="view-btn">View Details</a>
+                        <a href="https://lakshmisubbu123.github.io/sooperstorepro/" class="view-btn">View Details</a>
                     </div>
                 </div>
                 <div class="portfolio-info">
@@ -664,7 +926,6 @@
                 </div>
             </div> 
            
-
             <!-- Add more projects following the same structure -->
         </div>
 
@@ -688,88 +949,198 @@
             
             <div class="team-grid">
                 <!-- Team Member 1: Singiri.Himabindu -->
-                <div class="team-member" onclick="openModal('himabindu')">
-                    <img src="images/t1.jpg" alt="singiri.Himabindu" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">singiri.Himabindu</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t1.jpg" alt="singiri.Himabindu" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">singiri.Himabindu</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">Singiri.Himabindu</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: Hima@gmail.com</p>
+                            <p class="member-phone">Phone: 9988664567</p>
+                            <button class="view-details-btn" onclick="openModal('himabindu')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 2: Marripalli.Thejaswani -->
-                <div class="team-member" onclick="openModal('thejaswani')">
-                    <img src="images/t2.jpg" alt="Marripalli.Thejaswani" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Marripalli.Thejaswani</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t2.jpg" alt="Marripalli.Thejaswani" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Marripalli.Thejaswani</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">Marripalli.Thejaswani</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: Thejaswani@gmail.com</p>
+                            <p class="member-phone">Phone: 9966558899</p>
+                            <button class="view-details-btn" onclick="openModal('thejaswani')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 3: Mallem.Lakshmi -->
-                <div class="team-member" onclick="openModal('lakshmi')">
-                    <img src="images/t3.jpg" alt="Mallem.Lakshmi" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Mallem.Lakshmi </div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t3.jpg" alt="Mallem.Lakshmi" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Mallem.Lakshmi </div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">Mallem.Lakshmi</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: Lakshmi@gmail.com</p>
+                            <p class="member-phone">Phone: 9966337890</p>
+                            <button class="view-details-btn" onclick="openModal('lakshmi')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 4: Maheshwari -->
-                <div class="team-member" onclick="openModal('maheshwari')">
-                    <img src="images/t4.jpg" alt="Maheshwari" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Maheshwari</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t4.jpg" alt="Maheshwari" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Maheshwari</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">Maheshwari</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: maheshwari@gmail.com</p>
+                            <p class="member-phone">Phone: 9966332255</p>
+                            <button class="view-details-btn" onclick="openModal('maheshwari')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 5: N.hari -->
-                <div class="team-member" onclick="openModal('hari')">
-                    <img src="images/t6.jpg" alt="N.hari" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">N.hari</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t6.jpg" alt="N.hari" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">N.hari</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">N.hari</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: hari@gmail.com</p>
+                            <p class="member-phone">Phone: 9955335678</p>
+                            <button class="view-details-btn" onclick="openModal('hari')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 6: M.Himaja -->
-                <div class="team-member" onclick="openModal('himaja')">
-                    <img src="images/t5.jpg" alt="M.Himaja" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">M.Himaja</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t5.jpg" alt="M.Himaja" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">M.Himaja</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">M.Himaja</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: Himaja@gmail.com</p>
+                            <p class="member-phone">Phone: 9988664567</p>
+                            <button class="view-details-btn" onclick="openModal('himaja')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Team Member 7: B.Bhanu -->
-                <div class="team-member" onclick="openModal('bhanu')">
-                    <img src="images/t7.jpg" alt="B.Bhanu" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name"> B.Bhanu</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t7.jpg" alt="B.Bhanu" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name"> B.Bhanu</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">B.Bhanu</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: Bhanu@gmail.com</p>
+                            <p class="member-phone">Phone: 99663456789</p>
+                            <button class="view-details-btn" onclick="openModal('bhanu')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Team Member 8: M.Abhi -->
-                <div class="team-member" onclick="openModal('abhi')">
-                    <img src="images/t8.jpg" alt="M.Abhi" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">M.Abhi </div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t8.jpg" alt="M.Abhi" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">M.Abhi </div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">M.Abhi</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: Abhi@gmail.com</p>
+                            <p class="member-phone">Phone: 9988664567</p>
+                            <button class="view-details-btn" onclick="openModal('abhi')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Team Member 9: n.nani -->
-                <div class="team-member" onclick="openModal('nani')">
-                    <img src="images/t9.jpg" alt="n.nani" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">n.nani</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t9.jpg" alt="n.nani" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">n.nani</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">N.Nani</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: nani@gmail.com</p>
+                            <p class="member-phone">Phone: 9966558899</p>
+                            <button class="view-details-btn" onclick="openModal('nani')">View Details</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Team Member 10: M.aswani -->
-                <div class="team-member" onclick="openModal('aswani')">
-                    <img src="images/t10.jpeg" alt="M.aswani" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">M.aswani</div>
-                        <div class="member-position">Fornt End developer</div>
+                <div class="team-member">
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="images/t10.jpeg" alt="M.aswani" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">M.aswani</div>
+                                <div class="member-position">Fornt End developer</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">M.Aswani</h3>
+                            <p class="member-position">Front End Developer</p>
+                            <p class="member-email">Email: aswani@gmail.com</p>
+                            <p class="member-phone">Phone: 9966558899</p>
+                            <button class="view-details-btn" onclick="openModal('aswani')">View Details</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -851,8 +1222,6 @@
                          <span class="skill">database</span>
                          <span class="skill">x++</span>
                         <span class="skill">c++</span>
-
-
                     </div>
                 </div>
             </div>
@@ -894,7 +1263,6 @@
                         <span class="skill">UI/UX Design</span>
                         <span class="skill">html</span>
                         <span class="skill">css</span>
-                         
                     </div>
                 </div>
             </div>
@@ -935,7 +1303,6 @@
                          <span class="skill">database</span>
                          <span class="skill">x++</span>
                         <span class="skill">c++</span>
-
                     </div>
                 </div>
             </div>
@@ -977,7 +1344,6 @@
                         <span class="skill">UI/UX Design</span>
                         <span class="skill">html</span>
                         <span class="skill">css</span>
-
                     </div>
                 </div>
             </div>
@@ -1059,7 +1425,6 @@
                          <span class="skill">database</span>
                          <span class="skill">x++</span>
                         <span class="skill">c++</span>
-
                     </div>
                 </div>
             </div>
@@ -1140,8 +1505,6 @@
                          <span class="skill">database</span>
                          <span class="skill">x++</span>
                         <span class="skill">c++</span>
-
-
                     </div>
                 </div>
             </div>
@@ -1181,18 +1544,15 @@
                          <span class="skill">database</span>
                          <span class="skill">x++</span>
                         <span class="skill">c++</span>
-
-
                     </div>
                 </div>
             </div>
         </div>
 
-
         
         <!-- Client Testimonials -->
         <section class="portfolio-testimonials">
-            <h2>What Our Clients Say</h2>
+            <h2 style="color: black;">What Our Clients Say</h2>
             <div class="testimonial-slider">
                 <div class="testimonial">
                     <p>"Technetworks transformed our IT infrastructure with 99.9% uptime."</p>
@@ -1211,8 +1571,6 @@
             </div>
         </section>
 
-
-        
     </main>
 
     <!-- Footer (Same as other pages) -->
@@ -1222,15 +1580,6 @@
                 <h3>Technetworks.in</h3>
                 <p>Your trusted IT and call center solutions partner</p>
             </div>
-            <!-- <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div> -->
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p>Bangalore, Karnataka</p>
@@ -1284,14 +1633,12 @@
             }
         });
     </script>
-
-
-
     <div class="live-chat">
-    <button class="chat-btn">
-        <i class="fas fa-comment-dots"></i> Live Chat
-    </button>
-</div>
-
+        <button class="chat-btn">
+            <i class="fas fa-comment-dots"></i> Live Chat
+        </button>
+    </div>
 </body>
 </html>
+
+
