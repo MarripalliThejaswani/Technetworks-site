@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Portfolio | Technetworks</title>
     <link rel="stylesheet" href="Technetworkstyle.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/Technetworkstyle.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #2c3e50;
+    color: white;
+}
+.logo h1 {
+    font-size: 1.8rem;
+}
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+.nav-list li {
+    margin-left: 2rem;
+}
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-list a:hover {
+    color: #3498db;
+}
+.nav-list a.active {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.3rem;
+}
+/* Responsive Header */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-list {
+        margin-top: 1rem;
+        flex-direction: column;
+    }
+    .nav-list li {
+        margin: 0.5rem 0;
+    }
+}
+        /* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 15px;
+  background-color: #34495e;
+  color: #ecf0f1;
+  margin-top: 50px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+footer p {
+    color: white;
+}
         /* Basic styling */
          html, body {
             width: 100%;
@@ -30,7 +91,6 @@
             text-align: center;
             color: white; /* This will be overridden for the new hero section */
          }
-
         /* New Introduction Section (Hero) */
         .hero-section {
             position: relative;
@@ -47,7 +107,6 @@
             overflow: hidden; /* Important for containing animations */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
         }
-
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -57,14 +116,12 @@
             background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
             z-index: 1;
         }
-
         .hero-content {
             position: relative;
             z-index: 2; /* Ensure content is above the overlay */
             padding: 20px;
             max-width: 900px;
         }
-
         .hero-title {
             font-size: 3.8em;
             font-weight: 700;
@@ -73,7 +130,6 @@
             letter-spacing: 1px;
             opacity: 0; /* Start hidden for animation */
         }
-
         .hero-subtitle {
             font-size: 1.5em;
             margin-bottom: 40px;
@@ -81,7 +137,6 @@
             line-height: 1.5;
             opacity: 0; /* Start hidden for animation */
         }
-
         .hero-button {
             display: inline-block;
             padding: 15px 35px;
@@ -96,14 +151,12 @@
             border: 2px solid #007bff;
             opacity: 0; /* Start hidden for animation */
         }
-
         .hero-button:hover {
             background-color: #0056b3; /* Darker blue on hover */
             transform: translateY(-5px) scale(1.02); /* Lift and slightly enlarge on hover */
             box-shadow: 0 10px 20px rgba(0, 123, 255, 0.6); /* Enhanced shadow on hover */
             border-color: #0056b3;
         }
-
         /* Keyframe Animations */
         @keyframes fadeInUp {
             from {
@@ -115,7 +168,6 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes scaleIn {
             from {
                 opacity: 0;
@@ -126,27 +178,22 @@
                 transform: scale(1);
             }
         }
-
         /* Applying animations with delays */
         .animate-fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
         }
-
         .animate-fade-in-up-delay {
             animation: fadeInUp 1s ease-out 0.5s forwards; /* Delayed animation for subtitle */
         }
-
         .animate-scale-in {
             animation: scaleIn 0.8s ease-out 1s forwards; /* Delayed animation for button */
         }
-
         /* Subtle Animated Graphics */
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-15px) rotate(5deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
-
         .hero-graphic {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
@@ -154,7 +201,6 @@
             animation: float 6s ease-in-out infinite alternate; /* Floating animation */
             z-index: 0; /* Behind content and overlay */
         }
-
         .graphic-1 {
             width: 80px;
             height: 80px;
@@ -163,7 +209,6 @@
             animation-delay: 0.2s; /* Staggered animation */
             background-color: rgba(0, 123, 255, 0.15); /* Blue tint */
         }
-
         .graphic-2 {
             width: 120px;
             height: 120px;
@@ -173,14 +218,12 @@
             background-color: rgba(0, 123, 255, 0.1);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Blob shape */
         }
-
         /* 3D Slider Styles */
         .slider-section {
             background-color: #f5f5f5; /* Match body background */
             padding: 20px 0; /* Add some vertical padding */
             width: 100%; /* Ensure section itself takes full width */
         }
-
         .slider-container {
             perspective: 1500px; /* More pronounced 3D effect */
             width: 90vw; /* Full viewport width */
@@ -195,7 +238,6 @@
             overflow: hidden; /* Important for containing the 3D effect */
             background-color: #f0f0f0; /* Fallback background */
         }
-
         .slider {
             width: 100%;
             height: 100%;
@@ -203,7 +245,6 @@
             transform-style: preserve-3d;
             animation: rotate 20s infinite linear; /* Slower, grander rotation */
         }
-
         .slide {
             position: absolute;
             width: 100%;
@@ -219,26 +260,22 @@
             border-radius: 8px; /* Maintain rounded corners for individual slides */
             overflow: hidden;
         }
-
         .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-
         /* Positioning and rotating each slide for a 3D effect (4 slides = a square prism) */
         /* The translateZ value is calculated based on half the width of the slider-container (50vw) */
         .slide:nth-child(1) { transform: rotateY(0deg) translateZ(50vw); }
         .slide:nth-child(2) { transform: rotateY(90deg) translateZ(50vw); }
         .slide:nth-child(3) { transform: rotateY(180deg) translateZ(50vw); }
         .slide:nth-child(4) { transform: rotateY(270deg) translateZ(50vw); }
-
         @keyframes rotate {
             from { transform: rotateY(0deg); }
             to { transform: rotateY(360deg); }
         }
-
         /* Responsive adjustments for the hero section */
         @media (max-width: 768px) {
             .hero-title {
@@ -262,7 +299,6 @@
             }
             /* translateZ values remain 50vw as width is 100vw */
         }
-
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 2em;
@@ -279,7 +315,6 @@
             }
             /* translateZ values remain 50vw as width is 100vw */
         }
-
         /* Styles from team-portfolio-updated (copy.html) */
         /* Group photo section */
         .team-group-photo {
@@ -353,7 +388,6 @@
             height: 350px; /* Fixed height for consistent card size */
             cursor: pointer; /* Indicate it's interactive */
         }
-
         /* Inner container for the flip effect */
         .team-member-inner {
             position: relative;
@@ -363,7 +397,6 @@
             transition: transform 0.8s; /* Slower transition for a more noticeable flip */
             transform-style: preserve-3d;
         }
-
         /* Front and Back of the card */
         .team-member-front, .team-member-back {
             position: absolute;
@@ -381,36 +414,30 @@
             background-color: #fff; /* Default for front */
             color: #333; /* Default for front */
         }
-
         .team-member-front {
             z-index: 2;
         }
-
         .team-member-back {
             background-color: #007bff; /* Blue background for the back */
             color: #fff;
             transform: rotateY(180deg); /* Initially hidden */
         }
-
         /* Flip on hover */
         .team-member:hover .team-member-inner {
             transform: rotateY(180deg);
         }
-
         /* Styles for back content */
         .team-member-back .member-name {
             font-size: 1.5em;
             margin-bottom: 10px;
             font-weight: bold;
         }
-
         .team-member-back .member-position,
         .team-member-back .member-email,
         .team-member-back .member-phone {
             font-size: 1em;
             margin-bottom: 5px;
         }
-
         .team-member-back .view-details-btn {
             display: inline-block;
             padding: 8px 15px;
@@ -423,12 +450,10 @@
             font-size: 0.9em;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
         .team-member-back .view-details-btn:hover {
             background-color: #e0e0e0;
             color: #0056b3;
         }
-
         /* Adjustments for existing member-photo and member-info */
         .team-member-front .member-photo {
             width: 120px; /* Smaller photo on front for better fit */
@@ -437,7 +462,6 @@
             object-fit: cover;
             margin-bottom: 10px;
         }
-
         .team-member-front .member-info {
             padding: 0; /* Remove padding as it's handled by front/back */
         }
@@ -548,7 +572,6 @@
             border-radius: 20px;
             font-size: 0.9em;
         }
-
          /* New styles for project stats and upcoming projects */
         .project-stats-section {
             text-align: center;
@@ -559,20 +582,17 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             max-width: 800px;
         }
-
         .project-stats-section h3 {
             font-size: 2em;
             color: #0d4a96; /* Darker blue */
             margin-bottom: 20px;
         }
-
         .stats-grid {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             gap: 20px;
         }
-
         .stat-item {
             flex: 1;
             min-width: 200px;
@@ -582,19 +602,16 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             text-align: center;
         }
-
         .stat-item .number {
             font-size: 2.5em;
             font-weight: bold;
             color: #28a745; /* Green */
             margin-bottom: 5px;
         }
-
         .stat-item .label {
             font-size: 1.1em;
             color: #555;
         }
-
         .upcoming-projects-section {
             margin: 40px auto;
             padding: 30px;
@@ -603,19 +620,16 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             max-width: 800px;
         }
-
         .upcoming-projects-section h3 {
             font-size: 2em;
             color: #856404; /* Dark yellow/brown */
             margin-bottom: 20px;
             text-align: center;
         }
-
         .upcoming-projects-list {
             list-style: none;
             padding: 0;
         }
-
         .upcoming-projects-list li {
             background-color: #fff;
             margin-bottom: 10px;
@@ -642,6 +656,807 @@
         .testimonial{
             padding-right: 20px;
         }
+        
+        /* New styles for login functionality */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 5px;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .login-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            width: 350px;
+        }
+        
+        .login-form h3 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Employee Dashboard Styles */
+        .employee-dashboard {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(90deg, #2c3e50, #3498db);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+        
+        .dashboard-header .welcome-msg {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .dashboard-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .employee-profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .profile-photo {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+        
+        .profile-photo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f1f1f1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-value {
+            flex: 1;
+            color: #555;
+        }
+        
+        .blood-group-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .blood-group.A-positive { background-color: #ffeef0; color: #e74c3c; }
+        .blood-group.A-negative { background-color: #ffeef0; color: #e74c3c; }
+        .blood-group.B-positive { background-color: #e8f4fc; color: #3498db; }
+        .blood-group.B-negative { background-color: #e8f4fc; color: #3498db; }
+        .blood-group.O-positive { background-color: #eafaf1; color: #27ae60; }
+        .blood-group.O-negative { background-color: #eafaf1; color: #27ae60; }
+        .blood-group.AB-positive { background-color: #f5eef8; color: #9b59b6; }
+        .blood-group.AB-negative { background-color: #f5eef8; color: #9b59b6; }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-tag {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dashboard-tabs {
+            display: flex;
+            border-bottom: 2px solid #f1f1f1;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: #3498db;
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .notification-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .notification-icon {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-right: 15px;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .notification-time {
+            font-size: 0.85rem;
+            color: #777;
+        }
+        
+        .document-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s ease;
+        }
+        
+        .document-item:hover {
+            background-color: #e9ecef;
+        }
+        
+        .document-icon {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-right: 15px;
+        }
+        
+        .document-name {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        .document-date {
+            font-size: 0.85rem;
+            color: #777;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .action-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+        
+        .action-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .action-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .employee-profile {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-photo {
+                flex: none;
+            }
+            
+            .info-label {
+                width: 120px;
+            }
+            
+            .dashboard-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+/* Portfolio Specific Styles */
+.portfolio-main {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.portfolio-hero {
+    text-align: center;
+    padding: 60px 0;
+    border: 2px solid black;
+}
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    padding: 8px 20px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.filter-btn.active {
+    background: #3498db;
+    color: white;
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+.portfolio-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+.portfolio-img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+.portfolio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.portfolio-item:hover .portfolio-img img {
+    transform: scale(1.05);
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+.view-btn {
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.portfolio-info {
+    padding: 20px;
+    background: white;
+}
+.category-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+/* Testimonials */
+.portfolio-testimonials {
+    margin: 60px 0;
+    text-align: center;
+    border: 2px solid white;
+    background-color: white;
+    border-radius: 5px;
+}
+.portfolio-testimonials:hover h2{
+     background-color: black;
+     color: white;
+     transform: scale(1.02);
+     border-radius: 10px;
+}
+.portfolio-testimonials:hover span,strong{
+color: black;
+}
+.testimonial-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+}
+.testimonial-slider:hover {
+    background-color: black;
+     color: white;
+     transform: scale(1.02);
+     border-radius: 10px;
+}
+.testimonial {
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    scroll-snap-align: start;
+}
+.filter-btn {
+    color: black;
+    background-color: white;
+}
+.filter-btn:hover {
+    color: white;
+    background-color: black;
+}
+/* ===== Category Page ===== */
+.blog-categories {
+    padding: 40px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-decoration: none;
+}
+.categories-hero {
+    text-align: center;
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+.categories-hero h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+/* Category Grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 50px 0;
+}
+.category-card {
+    background: white;
+    border-radius: 8px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 2;
+}
+/* Category-Specific Colors */
+.category-card.it::before { background: #3498db; }
+.category-card.non-it::before { background: #9b59b6; }
+.category-card.voice::before { background: #e74c3c; }
+.category-card.non-voice::before { background: #f39c12; }
+.category-card.semi-non-voice::before { background: #1abc9c; }
+.category-card.semi-voice::before { background: #d35400; }
+.category-card.inbound::before { background: #27ae60; }
+.category-card.outbound::before { background: #8e44ad; }
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.card-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+/* Icon Colors */
+.category-card.it .card-icon { background: #3498db20; color: #3498db; }
+.category-card.non-it .card-icon { background: #9b59b620; color: #9b59b6; }
+.category-card.voice .card-icon { background: #e74c3c20; color: #e74c3c; }
+.category-card.non-voice .card-icon { background: #f39c1220; color: #f39c12; }
+.category-card.semi-non-voice .card-icon { background: #1abc9c20; color: #1abc9c; }
+.category-card.semi-voice .card-icon { background: #d3540020; color: #d35400; }
+.category-card.inbound .card-icon { background: #27ae6020; color: #27ae60; }
+.category-card.outbound .card-icon { background: #8e44ad20; color: #8e44ad; }
+.article-count {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+/* Trending Articles */
+.trending-articles {
+    margin: 80px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.trending-articles:hover {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    transform: scale(1.02);
+}
+.trending-articles:hover h2 {
+    color: white;
+}
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.article-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+.article-card:hover {
+    color: black;
+    background-color: white;
+}
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.article-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.article-content {
+    padding: 20px;
+}
+.category-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.category-badge.it { background: #3498db10; color: #3498db; }
+.category-badge.voice { background: #e74c3c10; color: #e74c3c; }
+/* Add other category badge colors similarly */
+.meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    color: #7f8c8d;
+    font-size: 0.85rem;
+} 
+.category-card.it, 
+.category-card.non-it,
+.category-card.voice,
+.category-card.non-voice,
+.category-card.semi-non-voice,
+.category-card.semi-voice,
+.category-card.inbound,
+.category-card.outbound {
+    text-decoration: none;
+}
+/* Employee Search Styles */
+.employee-search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+.employee-search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.employee-search-input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+.employee-search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+}
+.employee-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+}
+.employee-search-result-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.employee-search-result-item:hover {
+    background-color: #f8f9fa;
+}
+.employee-search-result-item:last-child {
+    border-bottom: none;
+}
+.employee-search-result-name {
+    font-weight: 600;
+    color: #2c3e50;
+}
+.employee-search-result-id {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+.employee-search-no-results {
+    padding: 12px 15px;
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+}
     </style>
 </head>
 <body>
@@ -660,23 +1475,27 @@
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="careers.html">Careers</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Login</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="adminLoginBtn">Admin Login</a>
+                        <a href="#" id="employeeLoginBtn">Employee Login</a>
+                    </div>
+                </li>
                 </ul> 
            </nav>
         </div>
     </header>
-
     <main class="portfolio-main">
         <!-- <section class="portfolio-hero">
             <h2>Our Work Speaks for Itself</h2>
             <p>Explore our successful projects and client solutions</p>
         </section> -->
-
         <section class="hero">
             <h2 class="slide-in">Our Work Speaks for Itself</h2>
             <p class="fade-in">Explore our successful projects and client solutions</p>
         </section>
         </main>
-
     <!-- Portfolio Main Content -->
     <!-- <main class="portfolio-main"> -->
         <!-- New Introduction Section -->
@@ -691,9 +1510,6 @@
             <!-- <div class="hero-graphic graphic-1"></div>
             <div class="hero-graphic graphic-2"></div>
         </section> -->
-
-
-
          <!-- Technetworks Introduction Section -->
            <main class="main-content">
         <div id="about" class="about-box">
@@ -724,7 +1540,6 @@
                 </div>
             </div>
         </section>
-
          <!-- Project Statistics Section -->
         <section class="project-stats-section container">
             <h3>Our Project Milestones</h3>
@@ -743,7 +1558,6 @@
                 </div>
             </div>
         </section>
-
           <!-- Upcoming Projects Section -->
         <!-- <section class="upcoming-projects-section container">
             <h3>Sneak Peek: Upcoming Projects</h3>
@@ -764,7 +1578,6 @@
              <button class="filter-btn" data-filter="transport">Transport Services</button>
             <button class="filter-btn" data-filter="publish">Self-Publishing Services</button>
         </div>
-
         <!-- Portfolio Grid -->
         <div class="portfolio-grid" id="portfolio-grid">
             <!-- Project 8 -->
@@ -797,7 +1610,6 @@
                     <span class="category-tag">IT Services</span>
                 </div>
             </div>
-
             <!-- Project 5 - ChatBuzz (Consistent Style) -->
             <div class="portfolio-item" data-category="non-it">
                 <div class="portfolio-img">
@@ -928,8 +1740,6 @@
            
             <!-- Add more projects following the same structure -->
         </div>
-
-
         <!-- Our Team Section -->
         <div class="container">
             <h1 style="color: black;">Our Team</h1>
@@ -947,611 +1757,40 @@
                 <span class="divider-text">Meet Our Team Members</span>
             </div>
             
-            <div class="team-grid">
-                <!-- Team Member 1: Singiri.Himabindu -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t1.jpg" alt="singiri.Himabindu" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">singiri.Himabindu</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">Singiri.Himabindu</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: Hima@gmail.com</p>
-                            <p class="member-phone">Phone: 9988664567</p>
-                            <button class="view-details-btn" onclick="openModal('himabindu')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 2: Marripalli.Thejaswani -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t2.jpg" alt="Marripalli.Thejaswani" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">Marripalli.Thejaswani</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">Marripalli.Thejaswani</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: Thejaswani@gmail.com</p>
-                            <p class="member-phone">Phone: 9966558899</p>
-                            <button class="view-details-btn" onclick="openModal('thejaswani')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 3: Mallem.Lakshmi -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t3.jpg" alt="Mallem.Lakshmi" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">Mallem.Lakshmi </div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">Mallem.Lakshmi</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: Lakshmi@gmail.com</p>
-                            <p class="member-phone">Phone: 9966337890</p>
-                            <button class="view-details-btn" onclick="openModal('lakshmi')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 4: Maheshwari -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t4.jpg" alt="Maheshwari" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">Maheshwari</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">Maheshwari</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: maheshwari@gmail.com</p>
-                            <p class="member-phone">Phone: 9966332255</p>
-                            <button class="view-details-btn" onclick="openModal('maheshwari')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 5: N.hari -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t6.jpg" alt="N.hari" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">N.hari</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">N.hari</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: hari@gmail.com</p>
-                            <p class="member-phone">Phone: 9955335678</p>
-                            <button class="view-details-btn" onclick="openModal('hari')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 6: M.Himaja -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t5.jpg" alt="M.Himaja" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">M.Himaja</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">M.Himaja</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: Himaja@gmail.com</p>
-                            <p class="member-phone">Phone: 9988664567</p>
-                            <button class="view-details-btn" onclick="openModal('himaja')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 7: B.Bhanu -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t7.jpg" alt="B.Bhanu" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name"> B.Bhanu</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">B.Bhanu</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: Bhanu@gmail.com</p>
-                            <p class="member-phone">Phone: 99663456789</p>
-                            <button class="view-details-btn" onclick="openModal('bhanu')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 8: M.Abhi -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t8.jpg" alt="M.Abhi" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">M.Abhi </div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">M.Abhi</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: Abhi@gmail.com</p>
-                            <p class="member-phone">Phone: 9988664567</p>
-                            <button class="view-details-btn" onclick="openModal('abhi')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 9: n.nani -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t9.jpg" alt="n.nani" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">n.nani</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">N.Nani</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: nani@gmail.com</p>
-                            <p class="member-phone">Phone: 9966558899</p>
-                            <button class="view-details-btn" onclick="openModal('nani')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Team Member 10: M.aswani -->
-                <div class="team-member">
-                    <div class="team-member-inner">
-                        <div class="team-member-front">
-                            <img src="images/t10.jpeg" alt="M.aswani" class="member-photo">
-                            <div class="member-info">
-                                <div class="member-name">M.aswani</div>
-                                <div class="member-position">Fornt End developer</div>
-                            </div>
-                        </div>
-                        <div class="team-member-back">
-                            <h3 class="member-name">M.Aswani</h3>
-                            <p class="member-position">Front End Developer</p>
-                            <p class="member-email">Email: aswani@gmail.com</p>
-                            <p class="member-phone">Phone: 9966558899</p>
-                            <button class="view-details-btn" onclick="openModal('aswani')">View Details</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="team-grid" id="teamGrid">
+                <!-- Team members will be dynamically loaded here -->
             </div>
         </div>
         
-        <!-- Modal for Singiri.Himabindu -->
-        <div id="himabindu-modal" class="modal">
+        <!-- Dynamic Employee Modal -->
+        <div id="employeeModal" class="modal">
             <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('himabindu')">&times;</span>
+                <span class="close-btn" onclick="closeEmployeeModal()">&times;</span>
                 <div class="modal-header">
-                    <img src="images/t1.jpg" alt="Singiri.Himabindu" class="modal-photo">
+                    <img id="modalEmployeePhoto" src="https://via.placeholder.com/150" alt="Employee Photo" class="modal-photo">
                     <div class="modal-header-info">
-                        <h3 class="modal-name"> Singiri.Himabindu</h3>
-                        <div class="modal-position">Fornt End Developer</div>
+                        <h3 class="modal-name" id="modalEmployeeName"></h3>
+                        <div class="modal-position" id="modalEmployeePosition"></div>
                         <div class="modal-contact">
-                            <p>Email: Hima@gmail.com</p>
-                            <p>Phone: 9988664567</p>
+                            <p id="modalEmployeeEmail"></p>
+                            <p id="modalEmployeePhone"></p>
                         </div>
                     </div>
                 </div>
-                <div class="modal-bio">
-                    <p>I have expertise in JavaScript, a versatile scripting language used to create interactive web applications,
-                         and React, a powerful JavaScript library for building user interfaces with reusable components.
-                          On the backend, I work with Node.js, which enables fast and scalable server-side development.
-                           I'm also skilled in Python, known for its simplicity and wide range of applications from automation to data science.
-                            My knowledge of AWS helps me deploy and manage applications in the cloud efficiently.
-                             I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. 
-                             Additionally, I use HTML and CSS to structure and style web pages, 
-                             ensuring they are both responsive and visually appealing..</p>
-                    
+                <div class="modal-bio" id="modalEmployeeBio">
+                    <!-- Bio will be populated here -->
                 </div>
                 <div class="modal-skills">
                     <h4>Key Skills</h4>
-                    <div class="skills-list">
-                      <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">AWS</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
+                    <div class="skills-list" id="modalEmployeeSkills">
+                        <!-- Skills will be populated here -->
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Modal for Marripalli.Thejaswani -->
-        <div id="thejaswani-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('thejaswani')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t2.jpg" alt="Marripalli.Thejaswani" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name">Marripalli.Thejaswani</h3>
-                        <div class="modal-position">fornt end developer</div>
-                        <div class="modal-contact">
-                            <p>Email: Thejaswani@gmail.com</p>
-                            <p>Phone: 9966558899</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience.
-                         With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. 
-                         I use HTML and CSS to develop well-structured, responsive layouts.
-                          My experience with .NET allows me to build scalable and secure applications, while my knowledge of 
-                          databases ensures efficient data management. Additionally, I am familiar with X++, which is used in
-                         enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.</p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                         <span class="skill">.net</span>
-                         <span class="skill">database</span>
-                         <span class="skill">x++</span>
-                        <span class="skill">c++</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal for Mallem.Lakshmi -->
-        <div id="lakshmi-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('lakshmi')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t3.jpg" alt="Mallem.Lakshmi" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name">Mallem.Lakshmi</h3>
-                        <div class="modal-position"> Fornt End Developer</div>
-                        <div class="modal-contact">
-                            <p>Email: Lakshmi@gmail.com</p>
-                            <p>Phone: 9966337890</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p> I have expertise in JavaScript, a versatile scripting language used to create interactive web applications,
-                         and React, a powerful JavaScript library for building user interfaces with reusable components.
-                          On the backend, I work with Node.js, which enables fast and scalable server-side development.
-                           I'm also skilled in Python, known for its simplicity and wide range of applications from automation to data science.
-                            My knowledge of AWS helps me deploy and manage applications in the cloud efficiently.
-                             I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. 
-                             Additionally, I use HTML and CSS to structure and style web pages, 
-                             ensuring they are both responsive and visually appealing.</p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">AWS</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal for Maheshwari -->
-        <div id="maheshwari-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('maheshwari')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t4.jpg" alt="Maheshwari" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name">Maheshwari</h3>
-                        <div class="modal-position"> Fornt End Developer</div>
-                        <div class="modal-contact">
-                            <p>Email: maheshwari@gmail.com</p>
-                            <p>Phone: 9966332255</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience.
-                         With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. 
-                         I use HTML and CSS to develop well-structured, responsive layouts.
-                          My experience with .NET allows me to build scalable and secure applications, while my knowledge of 
-                          databases ensures efficient data management. Additionally, I am familiar with X++, which is used in
-                         enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications. </p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                        
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                         <span class="skill">.net</span>
-                         <span class="skill">database</span>
-                         <span class="skill">x++</span>
-                        <span class="skill">c++</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal for N.hari -->
-        <div id="hari-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('hari')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t6.jpg" alt="N.hari" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name">N.hari</h3>
-                        <div class="modal-position">Fornt End developer</div>
-                        <div class="modal-contact">
-                            <p>Email: hari@gmail.com</p>
-                            <p>Phone: 9955335678</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have expertise in JavaScript, a versatile scripting language used to create interactive web applications,
-                and React, a powerful JavaScript library for building user interfaces with reusable components. On the backend, 
-                I work with Node.js, which enables fast and scalable server-side development. I'm also skilled in Python, 
-                known for its simplicity and wide range of applications from automation to data science. My knowledge of AWS
-                 helps me deploy and manage applications in the cloud efficiently. I have a strong foundation in UI/UX Design, 
-                 focusing on creating intuitive and user-friendly digital experiences. Additionally, I use HTML and CSS to 
-                 structure and style web pages, ensuring they are both responsive and visually appealing.
-    </p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">AWS</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal for M.Himaja -->
-        <div id="himaja-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('himaja')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t5.jpg" alt="M.Himaja" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name"> M.Himaja</h3>
-                        <div class="modal-position">Fornt End Developer</div>
-                        <div class="modal-contact">
-                            <p>Email: Himaja@gmail.com</p>
-                            <p>Phone: 9988664567</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have expertise in JavaScript, a versatile scripting language used to create interactive web applications,
-                         and React, a powerful JavaScript library for building user interfaces with reusable components.
-                          On the backend, I work with Node.js, which enables fast and scalable server-side development.
-                           I'm also skilled in Python, known for its simplicity and wide range of applications from automation to data science.
-                            My knowledge of AWS helps me deploy and manage applications in the cloud efficiently.
-                             I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. 
-                             Additionally, I use HTML and CSS to structure and style web pages, 
-                             ensuring they are both responsive and visually appealing..</p>
-                    
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                      <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">AWS</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal for B.Bhanu -->
-        <div id="bhanu-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('bhanu')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t7.jpg" alt="B.Bhanu" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name"> B.Bhanu</h3>
-                        <div class="modal-position">Fornt end developer</div>
-                        <div class="modal-contact">
-                            <p>Email: Bhanu@gmail.com</p>
-                            <p>Phone: 99663456789</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p> I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience.
-                         With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. 
-                         I use HTML and CSS to develop well-structured, responsive layouts. My experience with 
-                         .NET allows me to build scalable and secure applications, while my knowledge of databases 
-                         ensures efficient data management. Additionally, I am familiar with X++, which is used in enterprise 
-                         solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.
-    </p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                       <span class="skill">JavaScript</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                         <span class="skill">.net</span>
-                         <span class="skill">database</span>
-                         <span class="skill">x++</span>
-                        <span class="skill">c++</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal for M.Abhi -->
-        <div id="abhi-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('abhi')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t8.jpg" alt="M.Abhi" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name"> M.Abhi</h3>
-                        <div class="modal-position">Fornt End Developer</div>
-                        <div class="modal-contact">
-                            <p>Email: Abhi@gmail.com</p>
-                            <p>Phone: 9988664567</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have expertise in JavaScript, a versatile scripting language used to create interactive web applications,
-                         and React, a powerful JavaScript library for building user interfaces with reusable components.
-                          On the backend, I work with Node.js, which enables fast and scalable server-side development.
-                           I'm also skilled in Python, known for its simplicity and wide range of applications from automation to data science.
-                            My knowledge of AWS helps me deploy and manage applications in the cloud efficiently.
-                             I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. 
-                             Additionally, I use HTML and CSS to structure and style web pages, 
-                             ensuring they are both responsive and visually appealing.</p>
-                    
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                      <span class="skill">JavaScript</span>
-                        <span class="skill">React</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">Python</span>
-                        <span class="skill">AWS</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-     <!-- Modal for n.nani -->
-        <div id="nani-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('nani')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t9.jpg" alt="n.nani" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name">n.nani</h3>
-                        <div class="modal-position">fornt end developer</div>
-                        <div class="modal-contact">
-                            <p>Email: nani@gmail.com</p>
-                            <p>Phone: 9966558899</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience.
-                         With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. 
-                         I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build
-                         scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, 
-                         I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language 
-                         for developing high-performance applications.
-    </p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                         <span class="skill">.net</span>
-                         <span class="skill">database</span>
-                         <span class="skill">x++</span>
-                        <span class="skill">c++</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-         <!-- Modal for M.aswani -->
-        <div id="aswani-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="closeModal('aswani')">&times;</span>
-                <div class="modal-header">
-                    <img src="images/t10.jpeg" alt="M.aswani" class="modal-photo">
-                    <div class="modal-header-info">
-                        <h3 class="modal-name">M.aswani</h3>
-                        <div class="modal-position">fornt end developer</div>
-                        <div class="modal-contact">
-                            <p>Email: aswani@gmail.com</p>
-                            <p>Phone: 9966558899</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-bio">
-                    <p>I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience. 
-                        With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. 
-                        I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build
-                         scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, 
-                         I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language 
-                         for developing high-performance applications.
-    </p>
-                </div>
-                <div class="modal-skills">
-                    <h4>Key Skills</h4>
-                    <div class="skills-list">
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">UI/UX Design</span>
-                        <span class="skill">html</span>
-                        <span class="skill">css</span>
-                         <span class="skill">.net</span>
-                         <span class="skill">database</span>
-                         <span class="skill">x++</span>
-                        <span class="skill">c++</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         
         <!-- Client Testimonials -->
-        <section class="portfolio-testimonials">
+        <!-- <section class="portfolio-testimonials">
             <h2 style="color: black;">What Our Clients Say</h2>
             <div class="testimonial-slider">
                 <div class="testimonial">
@@ -1569,10 +1808,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-
+        </section> -->
     </main>
-
     <!-- Footer (Same as other pages) -->
     <footer>
         <div class="footer-content">
@@ -1591,19 +1828,364 @@
             <p>&copy; 2025 Technetworks.in. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- JavaScript for Portfolio Filtering -->
+    
+    <!-- Login Forms -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Admin Login Form -->
+    <div class="login-form" id="adminLoginForm">
+        <h3>Admin Login</h3>
+        <div class="form-group">
+            <label for="adminUsername">Username</label>
+            <input type="text" id="adminUsername" placeholder="Enter admin username">
+            <div class="error-message" id="adminUsernameError">Please enter a valid username</div>
+        </div>
+        <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <input type="password" id="adminPassword" placeholder="Enter password">
+            <div class="error-message" id="adminPasswordError">Please enter a valid password</div>
+        </div>
+        <div class="form-buttons">
+            <button class="btn btn-primary" id="adminLoginSubmit">Login</button>
+            <button class="btn btn-secondary" id="adminLoginCancel">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Employee Login Form -->
+    <div class="login-form" id="employeeLoginForm">
+        <h3>Employee Login</h3>
+        
+        <!-- Employee Search Section -->
+        <div class="employee-search-container">
+            <i class="fas fa-search employee-search-icon"></i>
+            <input type="text" id="employeeSearchInput" class="employee-search-input" placeholder="Search for your name...">
+            <div id="employeeSearchResults" class="employee-search-results"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="employeeName">Employee Name</label>
+            <input type="text" id="employeeName" placeholder="Enter your name">
+            <div class="error-message" id="employeeNameError">Please enter your name</div>
+        </div>
+        <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" placeholder="Enter your employee ID">
+            <div class="error-message" id="employeeIdError">Please enter your employee ID</div>
+        </div>
+        <div class="form-group">
+            <label for="employeeDOB">Date of Birth</label>
+            <input type="date" id="employeeDOB">
+            <div class="error-message" id="employeeDOBError">Please enter your date of birth</div>
+        </div>
+        <div class="form-buttons">
+            <button class="btn btn-primary" id="employeeLoginSubmit">Login</button>
+            <button class="btn btn-secondary" id="employeeLoginCancel">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Employee Dashboard -->
+    <div id="employeeDashboard" class="employee-dashboard">
+        <div class="dashboard-header">
+            <h1>Employee Dashboard</h1>
+            <div class="welcome-msg">Welcome, <span id="dashboardEmployeeName"></span>!</div>
+            <button class="logout-btn" id="dashboardLogout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+        
+        <div class="dashboard-container">
+            <!-- Profile Section -->
+            <div class="dashboard-section">
+                <h2 class="section-title">
+                    <i class="fas fa-user"></i> Your Profile
+                </h2>
+                <div class="employee-profile">
+                    <div class="profile-photo">
+                        <img id="dashboardEmployeePhoto" src="https://via.placeholder.com/180" alt="Employee Photo">
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-id-badge"></i> Employee ID:</div>
+                            <div class="info-value" id="dashboardEmployeeId"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-user"></i> Full Name:</div>
+                            <div class="info-value" id="dashboardEmployeeFullName"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-briefcase"></i> Position:</div>
+                            <div class="info-value" id="dashboardEmployeePosition"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-envelope"></i> Email:</div>
+                            <div class="info-value" id="dashboardEmployeeEmail"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-phone"></i> Phone:</div>
+                            <div class="info-value" id="dashboardEmployeePhone"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-calendar"></i> Date of Birth:</div>
+                            <div class="info-value" id="dashboardEmployeeDOB"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-map-marker-alt"></i> Address:</div>
+                            <div class="info-value" id="dashboardEmployeeAddress"></div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label"><i class="fas fa-tint"></i> Blood Group:</div>
+                            <div class="info-value" id="dashboardEmployeeBloodGroup"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="dashboard-section">
+                <h2 class="section-title">
+                    <i class="fas fa-cogs"></i> Your Skills
+                </h2>
+                <div class="skills-container" id="dashboardEmployeeSkills">
+                    <!-- Skills will be populated here -->
+                </div>
+            </div>
+            
+            <!-- Notifications Section -->
+            <!-- <div class="dashboard-section">
+                <h2 class="section-title">
+                    <i class="fas fa-bell"></i> Notifications
+                </h2>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Welcome to your dashboard</div>
+                        <div class="notification-time">Just now</div>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Your next performance review is scheduled</div>
+                        <div class="notification-time">2 days ago</div>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Congratulations on your recent achievement</div>
+                        <div class="notification-time">1 week ago</div>
+                    </div>
+                </div>
+            </div>
+            
+             Documents Section 
+            <div class="dashboard-section">
+                <h2 class="section-title">
+                    <i class="fas fa-file-alt"></i> Your Documents
+                </h2>
+                <ul class="document-list">
+                    <li class="document-item">
+                        <div class="document-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="document-name">Employment Contract</div>
+                        <div class="document-date">Uploaded: Jan 15, 2023</div>
+                    </li>
+                    <li class="document-item">
+                        <div class="document-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="document-name">Performance Review</div>
+                        <div class="document-date">Uploaded: Dec 10, 2022</div>
+                    </li>
+                    <li class="document-item">
+                        <div class="document-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="document-name">Training Certificate</div>
+                        <div class="document-date">Uploaded: Nov 5, 2022</div>
+                    </li>
+                </ul>
+            </div> --> 
+            
+            <!-- Quick Actions Section -->
+            <!-- <div class="dashboard-section">
+                <h2 class="section-title">
+                    <i class="fas fa-bolt"></i> Quick Actions
+                </h2>
+                <div class="quick-actions">
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="action-title">Update Profile</div>
+                        <div class="action-desc">Edit your personal information</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="action-title">Change Password</div>
+                        <div class="action-desc">Update your account password</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="action-title">Request Leave</div>
+                        <div class="action-desc">Submit a leave request</div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <div class="action-title">Upload Document</div>
+                        <div class="action-desc">Add a new document to your profile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     -->
+    <div class="live-chat">
+        <button class="chat-btn">
+            <i class="fas fa-comment-dots"></i> Live Chat
+        </button>
+    </div>
+    
+    <!-- JavaScript for Portfolio Filtering and Employee Management -->
     <script>
+        // Function to get employees from localStorage
+        function getEmployees() {
+            return JSON.parse(localStorage.getItem('employees')) || [
+                { id: 1, name: 'Singiri.Himabindu', position: 'Front End Developer', email: 'Hima@gmail.com', phone: '9988664567', dob: '1990-01-01', bloodGroup: 'A+', address: 'Bangalore, Karnataka', skills: ['JavaScript', 'React', 'Node.js', 'Python', 'AWS', 'UI/UX Design', 'HTML', 'CSS'], photo: 'images/t1.jpg' },
+                { id: 2, name: 'Marripalli.Thejaswani', position: 'Front End Developer', email: 'Thejaswani@gmail.com', phone: '9966558899', dob: '1992-02-02', bloodGroup: 'B+', address: 'Hyderabad, Telangana', skills: ['JavaScript', 'UI/UX Design', 'HTML', 'CSS', '.NET', 'Database', 'X++', 'C++'], photo: 'images/t2.jpg' },
+                { id: 3, name: 'Mallem.Lakshmi', position: 'Front End Developer', email: 'Lakshmi@gmail.com', phone: '9966337890', dob: '1991-03-03', bloodGroup: 'O+', address: 'Chennai, Tamil Nadu', skills: ['JavaScript', 'React', 'Node.js', 'Python', 'AWS', 'UI/UX Design', 'HTML', 'CSS'], photo: 'images/t3.jpg' },
+                { id: 4, name: 'Maheshwari', position: 'Front End Developer', email: 'maheshwari@gmail.com', phone: '9966332255', dob: '1993-04-04', bloodGroup: 'AB+', address: 'Mumbai, Maharashtra', skills: ['JavaScript', 'UI/UX Design', 'HTML', 'CSS', '.NET', 'Database', 'X++', 'C++'], photo: 'images/t4.jpg' },
+                { id: 5, name: 'N.hari', position: 'Front End Developer', email: 'hari@gmail.com', phone: '9955335678', dob: '1994-05-05', bloodGroup: 'A-', address: 'Delhi, NCR', skills: ['JavaScript', 'React', 'Node.js', 'Python', 'AWS', 'UI/UX Design', 'HTML', 'CSS'], photo: 'images/t6.jpg' },
+                { id: 6, name: 'M.Himaja', position: 'Front End Developer', email: 'Himaja@gmail.com', phone: '9988664567', dob: '1995-06-06', bloodGroup: 'B-', address: 'Pune, Maharashtra', skills: ['JavaScript', 'React', 'Node.js', 'Python', 'AWS', 'UI/UX Design', 'HTML', 'CSS'], photo: 'images/t5.jpg' },
+                { id: 7, name: 'B.Bhanu', position: 'Front End Developer', email: 'Bhanu@gmail.com', phone: '99663456789', dob: '1996-07-07', bloodGroup: 'O-', address: 'Kolkata, West Bengal', skills: ['JavaScript', 'UI/UX Design', 'HTML', 'CSS', '.NET', 'Database', 'X++', 'C++'], photo: 'images/t7.jpg' },
+                { id: 8, name: 'M.Abhi', position: 'Front End Developer', email: 'Abhi@gmail.com', phone: '9988664567', dob: '1997-08-08', bloodGroup: 'AB-', address: 'Ahmedabad, Gujarat', skills: ['JavaScript', 'React', 'Node.js', 'Python', 'AWS', 'UI/UX Design', 'HTML', 'CSS'], photo: 'images/t8.jpg' },
+                { id: 9, name: 'n.nani', position: 'Front End Developer', email: 'nani@gmail.com', phone: '9966558899', dob: '1998-09-09', bloodGroup: 'A+', address: 'Jaipur, Rajasthan', skills: ['JavaScript', 'UI/UX Design', 'HTML', 'CSS', '.NET', 'Database', 'X++', 'C++'], photo: 'images/t9.jpg' },
+                { id: 10, name: 'M.aswani', position: 'Front End Developer', email: 'aswani@gmail.com', phone: '9966558899', dob: '1999-10-10', bloodGroup: 'B+', address: 'Lucknow, Uttar Pradesh', skills: ['JavaScript', 'UI/UX Design', 'HTML', 'CSS', '.NET', 'Database', 'X++', 'C++'], photo: 'images/t10.jpeg' },
+                { id: 11, name: 'Rajesh Kumar', position: 'Full Stack Developer', email: 'rajesh@gmail.com', phone: '9876543210', dob: '1992-11-15', bloodGroup: 'O+', address: 'Chandigarh, Punjab', skills: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'Express', 'HTML/CSS', 'REST APIs', 'Git'], photo: 'https://randomuser.me/api/portraits/men/4.jpg' },
+                { id: 12, name: 'Priya Sharma', position: 'UI/UX Designer', email: 'priya@gmail.com', phone: '9898989898', dob: '1991-12-20', bloodGroup: 'A+', address: 'Goa', skills: ['React', 'Node.js', 'MongoDB', 'UI/UX Design', 'Photoshop', 'Figma'], photo: 'https://randomuser.me/api/portraits/women/8.jpg' }
+            ];
+        }
+
+        // Function to render team members dynamically
+        function renderTeamMembers() {
+            const employees = getEmployees();
+            const teamGrid = document.getElementById('teamGrid');
+            
+            // Clear existing team members
+            teamGrid.innerHTML = '';
+            
+            employees.forEach(employee => {
+                const teamMember = document.createElement('div');
+                teamMember.className = 'team-member';
+                teamMember.innerHTML = `
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="${employee.photo || 'https://via.placeholder.com/150'}" alt="${employee.name}" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">${employee.name}</div>
+                                <div class="member-position">${employee.position}</div>
+                            </div>
+                        </div>
+                        <div class="team-member-back">
+                            <h3 class="member-name">${employee.name}</h3>
+                            <p class="member-position">${employee.position}</p>
+                            <p class="member-email">Email: ${employee.email}</p>
+                            <p class="member-phone">Phone: ${employee.phone}</p>
+                            <button class="view-details-btn" onclick="showEmployeeDetails(${employee.id})">View Details</button>
+                        </div>
+                    </div>
+                `;
+                teamGrid.appendChild(teamMember);
+            });
+        }
+
+        // Function to show employee details in a modal
+        function showEmployeeDetails(employeeId) {
+            const employees = getEmployees();
+            const employee = employees.find(emp => emp.id === employeeId);
+            
+            if (employee) {
+                // Populate modal with employee data
+                document.getElementById('modalEmployeeName').textContent = employee.name;
+                document.getElementById('modalEmployeePosition').textContent = employee.position;
+                document.getElementById('modalEmployeeEmail').textContent = `Email: ${employee.email}`;
+                document.getElementById('modalEmployeePhone').textContent = `Phone: ${employee.phone}`;
+                document.getElementById('modalEmployeePhoto').src = employee.photo || 'https://via.placeholder.com/150';
+                document.getElementById('modalEmployeeBio').textContent = getEmployeeBio(employee.name);
+                
+                // Populate skills
+                const skillsContainer = document.getElementById('modalEmployeeSkills');
+                skillsContainer.innerHTML = '';
+                (employee.skills || []).forEach(skill => {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'skill';
+                    skillTag.textContent = skill;
+                    skillsContainer.appendChild(skillTag);
+                });
+                
+                // Show modal
+                document.getElementById('employeeModal').style.display = 'block';
+            }
+        }
+
+        // Function to close employee modal
+        function closeEmployeeModal() {
+            document.getElementById('employeeModal').style.display = 'none';
+        }
+
+        // Function to get employee bio (fallback if not in data)
+        function getEmployeeBio(employeeName) {
+            const bios = {
+                'Singiri.Himabindu': 'I have expertise in JavaScript, a versatile scripting language used to create interactive web applications, and React, a powerful JavaScript library for building user interfaces with reusable components. On the backend, I work with Node.js, which enables fast and scalable server-side development. I\'m also skilled in Python, known for its simplicity and wide range of applications from automation to data science. My knowledge of AWS helps me deploy and manage applications in the cloud efficiently. I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. Additionally, I use HTML and CSS to structure and style web pages, ensuring they are both responsive and visually appealing.',
+                'Marripalli.Thejaswani': 'I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience. With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.',
+                'Mallem.Lakshmi': 'I have expertise in JavaScript, a versatile scripting language used to create interactive web applications, and React, a powerful JavaScript library for building user interfaces with reusable components. On the backend, I work with Node.js, which enables fast and scalable server-side development. I\'m also skilled in Python, known for its simplicity and wide range of applications from automation to data science. My knowledge of AWS helps me deploy and manage applications in the cloud efficiently. I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. Additionally, I use HTML and CSS to structure and style web pages, ensuring they are both responsive and visually appealing.',
+                'Maheshwari': 'I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience. With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.',
+                'N.hari': 'I have expertise in JavaScript, a versatile scripting language used to create interactive web applications, and React, a powerful JavaScript library for building user interfaces with reusable components. On the backend, I work with Node.js, which enables fast and scalable server-side development. I\'m also skilled in Python, known for its simplicity and wide range of applications from automation to data science. My knowledge of AWS helps me deploy and manage applications in the cloud efficiently. I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. Additionally, I use HTML and CSS to structure and style web pages, ensuring they are both responsive and visually appealing.',
+                'M.Himaja': 'I have expertise in JavaScript, a versatile scripting language used to create interactive web applications, and React, a powerful JavaScript library for building user interfaces with reusable components. On the backend, I work with Node.js, which enables fast and scalable server-side development. I\'m also skilled in Python, known for its simplicity and wide range of applications from automation to data science. My knowledge of AWS helps me deploy and manage applications in the cloud efficiently. I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. Additionally, I use HTML and CSS to structure and style web pages, ensuring they are both responsive and visually appealing.',
+                'B.Bhanu': 'I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience. With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.',
+                'M.Abhi': 'I have expertise in JavaScript, a versatile scripting language used to create interactive web applications, and React, a powerful JavaScript library for building user interfaces with reusable components. On the backend, I work with Node.js, which enables fast and scalable server-side development. I\'m also skilled in Python, known for its simplicity and wide range of applications from automation to data science. My knowledge of AWS helps me deploy and manage applications in the cloud efficiently. I have a strong foundation in UI/UX Design, focusing on creating intuitive and user-friendly digital experiences. Additionally, I use HTML and CSS to structure and style web pages, ensuring they are both responsive and visually appealing.',
+                'n.nani': 'I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience. With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.',
+                'M.aswani': 'I have a strong foundation in JavaScript for creating interactive web features and enhancing user experience. With skills in UI/UX Design, I focus on building interfaces that are both functional and visually appealing. I use HTML and CSS to develop well-structured, responsive layouts. My experience with .NET allows me to build scalable and secure applications, while my knowledge of databases ensures efficient data management. Additionally, I am familiar with X++, which is used in enterprise solutions like Microsoft Dynamics AX, and C++, a powerful language for developing high-performance applications.',
+                'Rajesh Kumar': 'I am a Full Stack Developer with expertise in both frontend and backend technologies. I specialize in creating end-to-end web applications with a focus on performance and user experience. My experience includes working with modern JavaScript frameworks, server-side technologies, and database management.',
+                'Priya Sharma': 'I am a UI/UX Designer passionate about creating intuitive and engaging user experiences. I specialize in user research, wireframing, prototyping, and visual design. My goal is to create interfaces that are not only visually appealing but also functional and accessible.'
+            };
+            return bios[employeeName] || 'No bio available.';
+        }
+
+        // Listen for storage changes to update team members when admin makes changes
+        window.addEventListener('storage', function(event) {
+            if (event.key === 'employees') {
+                renderTeamMembers();
+            }
+        });
+
+        // Initialize team members on page load
         document.addEventListener('DOMContentLoaded', function() {
+            renderTeamMembers();
+            
+            // Portfolio filtering functionality
             const filterButtons = document.querySelectorAll('.filter-btn');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
-
+            
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     // Update active button
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-
+                    
                     // Filter items
                     const filterValue = button.getAttribute('data-filter');
                     portfolioItems.forEach(item => {
@@ -1615,30 +2197,299 @@
                     });
                 });
             });
-
-            // Modal functionality (added from copy.html)
-            window.openModal = function(memberId) {
-                document.getElementById(memberId + '-modal').style.display = 'block';
-            }
             
-            window.closeModal = function(memberId) {
-                document.getElementById(memberId + '-modal').style.display = 'none';
-            }
+            // Login functionality
+            const adminLoginBtn = document.getElementById('adminLoginBtn');
+            const employeeLoginBtn = document.getElementById('employeeLoginBtn');
+            const adminLoginForm = document.getElementById('adminLoginForm');
+            const employeeLoginForm = document.getElementById('employeeLoginForm');
+            const overlay = document.getElementById('overlay');
+            const adminLoginSubmit = document.getElementById('adminLoginSubmit');
+            const adminLoginCancel = document.getElementById('adminLoginCancel');
+            const employeeLoginSubmit = document.getElementById('employeeLoginSubmit');
+            const employeeLoginCancel = document.getElementById('employeeLoginCancel');
+            const employeeDashboard = document.getElementById('employeeDashboard');
+            const dashboardLogout = document.getElementById('dashboardLogout');
             
-            // Close modal when clicking outside of it (added from copy.html)
-            window.onclick = function(event) {
-                if (event.target.className === 'modal') {
-                    event.target.style.display = 'none';
+            // Employee search functionality
+            const employeeSearchInput = document.getElementById('employeeSearchInput');
+            const employeeSearchResults = document.getElementById('employeeSearchResults');
+            const employeeNameInput = document.getElementById('employeeName');
+            const employeeIdInput = document.getElementById('employeeId');
+            
+            // Employee search input event listener
+            employeeSearchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    employeeSearchResults.style.display = 'none';
+                    return;
                 }
+                
+                const employees = getEmployees();
+                const filteredEmployees = employees.filter(employee => 
+                    employee.name.toLowerCase().includes(searchTerm)
+                );
+                
+                if (filteredEmployees.length === 0) {
+                    employeeSearchResults.innerHTML = '<div class="employee-search-no-results">No employees found</div>';
+                } else {
+                    employeeSearchResults.innerHTML = '';
+                    filteredEmployees.forEach(employee => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'employee-search-result-item';
+                        resultItem.innerHTML = `
+                            <div class="employee-search-result-name">${employee.name}</div>
+                            <div class="employee-search-result-id">ID: ${employee.id}</div>
+                        `;
+                        
+                        resultItem.addEventListener('click', function() {
+                            // Populate the form fields with the selected employee's data
+                            employeeNameInput.value = employee.name;
+                            employeeIdInput.value = employee.id;
+                            
+                            // Hide the search results
+                            employeeSearchResults.style.display = 'none';
+                            employeeSearchInput.value = '';
+                        });
+                        
+                        employeeSearchResults.appendChild(resultItem);
+                    });
+                }
+                
+                employeeSearchResults.style.display = 'block';
+            });
+            
+            // Hide search results when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!employeeSearchInput.contains(event.target) && !employeeSearchResults.contains(event.target)) {
+                    employeeSearchResults.style.display = 'none';
+                }
+            });
+            
+            // Show admin login form
+            adminLoginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                overlay.style.display = 'block';
+                adminLoginForm.style.display = 'block';
+                employeeLoginForm.style.display = 'none';
+                employeeDashboard.style.display = 'none';
+            });
+            
+            // Show employee login form
+            employeeLoginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                overlay.style.display = 'block';
+                employeeLoginForm.style.display = 'block';
+                adminLoginForm.style.display = 'none';
+                employeeDashboard.style.display = 'none';
+            });
+            
+            // Hide login forms when clicking overlay
+            overlay.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                adminLoginForm.style.display = 'none';
+                employeeLoginForm.style.display = 'none';
+            });
+            
+            // Cancel admin login
+            adminLoginCancel.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                adminLoginForm.style.display = 'none';
+            });
+            
+            // Cancel employee login
+            employeeLoginCancel.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                employeeLoginForm.style.display = 'none';
+            });
+            
+            // Admin login submit
+            adminLoginSubmit.addEventListener('click', function() {
+                const username = document.getElementById('adminUsername').value;
+                const password = document.getElementById('adminPassword').value;
+                
+                // Reset error messages
+                document.getElementById('adminUsernameError').style.display = 'none';
+                document.getElementById('adminPasswordError').style.display = 'none';
+                
+                // Validate input
+                let isValid = true;
+                
+                if (username.trim() === '') {
+                    document.getElementById('adminUsernameError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (password.trim() === '') {
+                    document.getElementById('adminPasswordError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // For demo purposes, accept any username/password
+                    // In a real application, you would validate against a backend
+                    window.location.href = 'admin.html';
+                }
+            });
+            
+            // Function to format date
+            function formatDate(dateString) {
+                const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString(undefined, options);
+            }
+            
+            // Employee login submit
+            employeeLoginSubmit.addEventListener('click', function() {
+                const name = document.getElementById('employeeName').value;
+                const employeeId = document.getElementById('employeeId').value;
+                const dob = document.getElementById('employeeDOB').value;
+                
+                // Reset error messages
+                document.getElementById('employeeNameError').style.display = 'none';
+                document.getElementById('employeeIdError').style.display = 'none';
+                document.getElementById('employeeDOBError').style.display = 'none';
+                
+                // Validate input
+                let isValid = true;
+                
+                if (name.trim() === '') {
+                    document.getElementById('employeeNameError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (employeeId.trim() === '') {
+                    document.getElementById('employeeIdError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (dob === '') {
+                    document.getElementById('employeeDOBError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Get employees from localStorage (stored by admin panel)
+                    const employees = getEmployees();
+                    
+                    // Find employee by name, ID, and DOB
+                    const employee = employees.find(emp => 
+                        emp.name.toLowerCase() === name.toLowerCase() && 
+                        emp.id.toString() === employeeId && 
+                        emp.dob === dob
+                    );
+                    
+                    if (employee) {
+                        // Populate dashboard with employee information
+                        document.getElementById('dashboardEmployeeName').textContent = employee.name;
+                        document.getElementById('dashboardEmployeeId').textContent = 'EMP-' + employee.id;
+                        document.getElementById('dashboardEmployeeFullName').textContent = employee.name;
+                        document.getElementById('dashboardEmployeePosition').textContent = employee.position;
+                        document.getElementById('dashboardEmployeeEmail').textContent = employee.email;
+                        document.getElementById('dashboardEmployeePhone').textContent = employee.phone;
+                        document.getElementById('dashboardEmployeeDOB').textContent = formatDate(employee.dob);
+                        document.getElementById('dashboardEmployeeAddress').textContent = employee.address;
+                        
+                        // Display blood group with badge
+                        const bloodGroupElement = document.getElementById('dashboardEmployeeBloodGroup');
+                        bloodGroupElement.innerHTML = `<span class="blood-group ${employee.bloodGroup}">${employee.bloodGroup.replace('-', ' ').toUpperCase()}</span>`;
+                        
+                        // Display photo if available
+                        if (employee.photo) {
+                            document.getElementById('dashboardEmployeePhoto').src = employee.photo;
+                        }
+                        
+                        // Display skills
+                        const skillsContainer = document.getElementById('dashboardEmployeeSkills');
+                        skillsContainer.innerHTML = '';
+                        (employee.skills || []).forEach(skill => {
+                            const skillTag = document.createElement('span');
+                            skillTag.className = 'skill-tag';
+                            skillTag.textContent = skill;
+                            skillsContainer.appendChild(skillTag);
+                        });
+                        
+                        // Store login session
+                        sessionStorage.setItem('loggedInEmployee', JSON.stringify(employee));
+                        
+                        // Hide login form and show dashboard
+                        overlay.style.display = 'none';
+                        employeeLoginForm.style.display = 'none';
+                        employeeDashboard.style.display = 'block';
+                    } else {
+                        // Employee not found
+                        document.getElementById('employeeNameError').textContent = 'Employee not found. Please check your name, ID, and date of birth.';
+                        document.getElementById('employeeNameError').style.display = 'block';
+                    }
+                }
+            });
+            
+            // Dashboard logout
+            dashboardLogout.addEventListener('click', function() {
+                // Clear session storage
+                sessionStorage.removeItem('loggedInEmployee');
+                
+                // Hide dashboard and show portfolio page
+                employeeDashboard.style.display = 'none';
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'notification success';
+                successMsg.innerHTML = '<i class="fas fa-check-circle"></i> You have been successfully logged out.';
+                document.body.appendChild(successMsg);
+                
+                // Remove message after 3 seconds
+                setTimeout(() => {
+                    document.body.removeChild(successMsg);
+                }, 3000);
+            });
+            
+            // Check if employee is already logged in
+            const loggedInEmployee = sessionStorage.getItem('loggedInEmployee');
+            if (loggedInEmployee) {
+                const employee = JSON.parse(loggedInEmployee);
+                
+                // Populate dashboard with employee information
+                document.getElementById('dashboardEmployeeName').textContent = employee.name;
+                document.getElementById('dashboardEmployeeId').textContent = 'EMP-' + employee.id;
+                document.getElementById('dashboardEmployeeFullName').textContent = employee.name;
+                document.getElementById('dashboardEmployeePosition').textContent = employee.position;
+                document.getElementById('dashboardEmployeeEmail').textContent = employee.email;
+                document.getElementById('dashboardEmployeePhone').textContent = employee.phone;
+                document.getElementById('dashboardEmployeeDOB').textContent = formatDate(employee.dob);
+                document.getElementById('dashboardEmployeeAddress').textContent = employee.address;
+                
+                // Display blood group with badge
+                const bloodGroupElement = document.getElementById('dashboardEmployeeBloodGroup');
+                bloodGroupElement.innerHTML = `<span class="blood-group ${employee.bloodGroup}">${employee.bloodGroup.replace('-', ' ').toUpperCase()}</span>`;
+                
+                // Display photo if available
+                if (employee.photo) {
+                    document.getElementById('dashboardEmployeePhoto').src = employee.photo;
+                }
+                
+                // Display skills
+                const skillsContainer = document.getElementById('dashboardEmployeeSkills');
+                skillsContainer.innerHTML = '';
+                (employee.skills || []).forEach(skill => {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'skill-tag';
+                    skillTag.textContent = skill;
+                    skillsContainer.appendChild(skillTag);
+                });
+                
+                // Show dashboard
+                employeeDashboard.style.display = 'block';
             }
         });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('employeeModal');
+            if (event.target === modal) {
+                closeEmployeeModal();
+            }
+        }
     </script>
-    <div class="live-chat">
-        <button class="chat-btn">
-            <i class="fas fa-comment-dots"></i> Live Chat
-        </button>
-    </div>
 </body>
 </html>
-
-

@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Technetworks</title>
+    <link rel="stylesheet" href="Technetworksstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .admin-panel {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .admin-panel:hover {
+            transform: translateY(-5px);
+        }
+        
+        .admin-panel h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .admin-panel h2 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .employee-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-tag {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .skill-tag i {
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .photo-upload {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #3498db;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .photo-upload:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .photo-upload i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .photo-upload span {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .photo-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f99);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7b7d);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+        }
+        
+        .employee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .employee-table th {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .employee-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .employee-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .employee-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            padding: 8px 12px;
+            background-color: #fadbd8;
+            border-radius: 6px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .success-message {
+            color: #27ae60;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            padding: 8px 12px;
+            background-color: #d5f4e6;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .edit-form {
+            display: none;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .edit-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .employee-id {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .notification.error {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .stats-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .stat-card h3 {
+            margin: 0 0 10px;
+            font-size: 2rem;
+        }
+        
+        .stat-card p {
+            margin: 0;
+            color: #7f8c8d;
+        }
+        
+        .stat-card.employees i {
+            color: #3498db;
+        }
+        
+        .stat-card.added i {
+            color: #2ecc71;
+        }
+        
+        .stat-card.updated i {
+            color: #f39c12;
+        }
+        
+        .employee-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .edit-photo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .edit-photo-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .edit-photo-upload {
+            flex: 1;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-bar input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .multi-select-container {
+            position: relative;
+        }
+        
+        .multi-select-dropdown {
+            position: relative;
+            width: 100%;
+        }
+        
+        .multi-select-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: white;
+            transition: border-color 0.3s ease;
+        }
+        
+        .multi-select-header:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .multi-select-header i {
+            color: #7f8c8d;
+        }
+        
+        .multi-select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+        }
+        
+        .multi-select-options.show {
+            display: block;
+        }
+        
+        .multi-select-option {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .multi-select-option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .multi-select-option.selected {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .multi-select-option input {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Panel - Employee Management</h1>
+        <button class="btn btn-secondary logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+    
+    <div class="container">
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="stat-card employees">
+                <i class="fas fa-users"></i>
+                <h3 id="totalEmployees">0</h3>
+                <p>Total Employees</p>
+            </div>
+            <div class="stat-card added">
+                <i class="fas fa-user-plus"></i>
+                <h3 id="addedToday">0</h3>
+                <p>Added Today</p>
+            </div>
+            <div class="stat-card updated">
+                <i class="fas fa-user-edit"></i>
+                <h3 id="updatedToday">0</h3>
+                <p>Updated Today</p>
+            </div>
+        </div>
+        
+        <div class="admin-panel">
+            <h2><i class="fas fa-user-plus"></i> Add New Employee</h2>
+            <div class="employee-form">
+                <div class="form-group">
+                    <label for="empName">Full Name</label>
+                    <input type="text" id="empName" placeholder="Enter employee full name">
+                    <div class="error-message" id="nameError">Please enter a valid name</div>
+                </div>
+                <div class="form-group">
+                    <label for="empPosition">Position</label>
+                    <input type="text" id="empPosition" placeholder="Enter position">
+                    <div class="error-message" id="positionError">Please enter a valid position</div>
+                </div>
+                <div class="form-group">
+                    <label for="empEmail">Email</label>
+                    <input type="email" id="empEmail" placeholder="Enter email">
+                    <div class="error-message" id="emailError">Please enter a valid email</div>
+                </div>
+                <div class="form-group">
+                    <label for="empPhone">Phone</label>
+                    <input type="tel" id="empPhone" placeholder="Enter phone number">
+                    <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                </div>
+                <div class="form-group">
+                    <label for="empDOB">Date of Birth</label>
+                    <input type="date" id="empDOB">
+                    <div class="error-message" id="dobError">Please enter a valid date of birth</div>
+                </div>
+                <div class="form-group">
+                    <label for="empBloodGroup">Blood Group</label>
+                    <select id="empBloodGroup">
+                        <option value="">Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <div class="error-message" id="bloodError">Please select a blood group</div>
+                </div>
+                <div class="form-group">
+                    <label for="empAddress">Permanent Address</label>
+                    <input type="text" id="empAddress" placeholder="Enter permanent address">
+                    <div class="error-message" id="addressError">Please enter a valid address</div>
+                </div>
+                <div class="form-group">
+                    <label>Skills</label>
+                    <div class="multi-select-container">
+                        <div class="multi-select-dropdown" id="skillsDropdown">
+                            <div class="multi-select-header" id="skillsHeader">
+                                <span id="skillsPlaceholder">Select skills...</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="multi-select-options" id="skillsOptions">
+                                <!-- Options will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-container" id="skillsContainer"></div>
+                    <div class="error-message" id="skillsError">Please select at least one skill</div>
+                </div>
+                <div class="form-group">
+                    <label>Employee Photo</label>
+                    <div class="photo-upload" id="photoUpload">
+                        <i class="fas fa-camera"></i>
+                        <span>Click to upload photo</span>
+                        <img class="photo-preview" id="photoPreview" alt="Employee photo">
+                        <input type="file" id="empPhoto" class="file-input" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="addEmployeeBtn">
+                <i class="fas fa-plus"></i> Add Employee
+            </button>
+            <div class="success-message" id="successMessage">Employee added successfully!</div>
+            <div class="error-message" id="duplicateError">Employee with this email already exists!</div>
+        </div>
+        
+        <div class="admin-panel">
+            <h2><i class="fas fa-users"></i> Employee List</h2>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="employeeSearch" placeholder="Search employees by name, position, email, phone, blood group, address, or skills...">
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Date of Birth</th>
+                            <th>Blood Group</th>
+                            <th>Address</th>
+                            <th>Skills</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTableBody">
+                        <!-- Employee data will be populated here -->
+                    </tbody>
+                </table>
+                <div class="no-results" id="noResults" style="display: none;">
+                    No employees found matching your search criteria.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+    
+    <script>
+        // Predefined skills list
+        const predefinedSkills = [
+            'HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node.js', 'Vue.js', 
+            'TypeScript', 'Sass', 'Angular', 'RxJS', 'NgRx', 'jQuery', 'Bootstrap',
+            'React Native', 'Flutter', 'Firebase', 'HTML5', 'CSS3', 'ES6', 
+            'Webpack', 'Babel', 'Jest', 'GraphQL', 'Apollo', 'REST API', 'Git',
+            'CI/CD', 'Agile', 'Python', 'Java', 'C++', 'PHP', 'Ruby', 'Go',
+            'Docker', 'Kubernetes', 'AWS', 'Azure', 'MongoDB', 'MySQL', 'PostgreSQL',
+            'Machine Learning', 'Data Science', 'UI/UX Design', 'Photoshop', 'Figma'
+        ];
+        
+        // Default employees data
+        const defaultEmployees = [
+            { id: 1, name: 'Singiri.Himabindu', position: 'Front End Developer', email: 'Hima@gmail.com', phone: '9988664567', dob: '1990-01-01', bloodGroup: 'A+', address: 'Bangalore, Karnataka', skills: ['HTML', 'CSS', 'JavaScript'], photo: 'https://randomuser.me/api/portraits/women/1.jpg' },
+            { id: 2, name: 'Marripalli.Thejaswani', position: 'Front End Developer', email: 'Thejaswani@gmail.com', phone: '9966558899', dob: '1992-02-02', bloodGroup: 'B+', address: 'Hyderabad, Telangana', skills: ['React', 'Redux', 'Node.js'], photo: 'https://randomuser.me/api/portraits/women/2.jpg' },
+            { id: 3, name: 'Mallem.Lakshmi', position: 'Front End Developer', email: 'Lakshmi@gmail.com', phone: '9966337890', dob: '1991-03-03', bloodGroup: 'O+', address: 'Chennai, Tamil Nadu', skills: ['Vue.js', 'TypeScript', 'Sass'], photo: 'https://randomuser.me/api/portraits/women/3.jpg' },
+            { id: 4, name: 'Maheshwari', position: 'Front End Developer', email: 'maheshwari@gmail.com', phone: '9966332255', dob: '1993-04-04', bloodGroup: 'AB+', address: 'Mumbai, Maharashtra', skills: ['Angular', 'RxJS', 'NgRx'], photo: 'https://randomuser.me/api/portraits/women/4.jpg' },
+            { id: 5, name: 'N.hari', position: 'Front End Developer', email: 'hari@gmail.com', phone: '9955335678', dob: '1994-05-05', bloodGroup: 'A-', address: 'Delhi, NCR', skills: ['JavaScript', 'jQuery', 'Bootstrap'], photo: 'https://randomuser.me/api/portraits/men/1.jpg' },
+            { id: 6, name: 'M.Himaja', position: 'Front End Developer', email: 'Himaja@gmail.com', phone: '9988664567', dob: '1995-06-06', bloodGroup: 'B-', address: 'Pune, Maharashtra', skills: ['React Native', 'Flutter', 'Firebase'], photo: 'https://randomuser.me/api/portraits/women/5.jpg' },
+            { id: 7, name: 'B.Bhanu', position: 'Front End Developer', email: 'Bhanu@gmail.com', phone: '99663456789', dob: '1996-07-07', bloodGroup: 'O-', address: 'Kolkata, West Bengal', skills: ['HTML5', 'CSS3', 'ES6'], photo: 'https://randomuser.me/api/portraits/women/6.jpg' },
+            { id: 8, name: 'M.Abhi', position: 'Front End Developer', email: 'Abhi@gmail.com', phone: '9988664567', dob: '1997-08-08', bloodGroup: 'AB-', address: 'Ahmedabad, Gujarat', skills: ['Webpack', 'Babel', 'Jest'], photo: 'https://randomuser.me/api/portraits/men/2.jpg' },
+            { id: 9, name: 'n.nani', position: 'Front End Developer', email: 'nani@gmail.com', phone: '9966558899', dob: '1998-09-09', bloodGroup: 'A+', address: 'Jaipur, Rajasthan', skills: ['GraphQL', 'Apollo', 'REST API'], photo: 'https://randomuser.me/api/portraits/men/3.jpg' },
+            { id: 10, name: 'M.aswani', position: 'Front End Developer', email: 'aswani@gmail.com', phone: '9966558899', dob: '1999-10-10', bloodGroup: 'B+', address: 'Lucknow, Uttar Pradesh', skills: ['Git', 'CI/CD', 'Agile'], photo: 'https://randomuser.me/api/portraits/women/7.jpg' },
+            { id: 11, name: 'Rajesh Kumar', position: 'UI/UX Designer', email: 'rajesh@gmail.com', phone: '9876543210', dob: '1992-11-15', bloodGroup: 'O+', address: 'Chandigarh, Punjab', skills: ['UI/UX Design', 'Photoshop', 'Figma'], photo: 'https://randomuser.me/api/portraits/men/4.jpg' },
+            { id: 12, name: 'Priya Sharma', position: 'Full Stack Developer', email: 'priya@gmail.com', phone: '9898989898', dob: '1991-12-20', bloodGroup: 'A+', address: 'Goa', skills: ['React', 'Node.js', 'MongoDB'], photo: 'https://randomuser.me/api/portraits/women/8.jpg' }
+        ];
+        
+        // Initialize employees array from localStorage or use default data
+        let employees = [];
+        try {
+            const storedEmployees = localStorage.getItem('employees');
+            if (storedEmployees) {
+                employees = JSON.parse(storedEmployees);
+                // If localStorage has data but less than 12 employees, add the missing ones
+                if (employees.length < 12) {
+                    // Get IDs of existing employees
+                    const existingIds = employees.map(emp => emp.id);
+                    // Add default employees that don't exist yet
+                    defaultEmployees.forEach(emp => {
+                        if (!existingIds.includes(emp.id)) {
+                            employees.push(emp);
+                        }
+                    });
+                    // Save the updated list
+                    localStorage.setItem('employees', JSON.stringify(employees));
+                }
+            } else {
+                // No data in localStorage, use default data
+                employees = [...defaultEmployees];
+                localStorage.setItem('employees', JSON.stringify(employees));
+            }
+        } catch (e) {
+            console.error('Error loading employees from localStorage:', e);
+            // Fallback to default data
+            employees = [...defaultEmployees];
+            localStorage.setItem('employees', JSON.stringify(employees));
+        }
+        
+        // Current skills array for new employee
+        let currentSkills = [];
+        
+        // Function to get today's date string
+        function getTodayDateString() {
+            const today = new Date();
+            return today.toISOString().split('T')[0];
+        }
+        
+        // Function to initialize or get statistics
+        function initializeStatistics() {
+            const stats = JSON.parse(localStorage.getItem('employeeStats')) || {
+                lastUpdatedDate: getTodayDateString(),
+                addedToday: 0,
+                updatedToday: 0
+            };
+            
+            // Check if we need to reset counters (new day)
+            const today = getTodayDateString();
+            if (stats.lastUpdatedDate !== today) {
+                stats.lastUpdatedDate = today;
+                stats.addedToday = 0;
+                stats.updatedToday = 0;
+            }
+            
+            return stats;
+        }
+        
+        // Function to save statistics
+        function saveStatistics(stats) {
+            localStorage.setItem('employeeStats', JSON.stringify(stats));
+        }
+        
+        // Initialize statistics
+        let stats = initializeStatistics();
+        
+        // Save employees to localStorage
+        function saveEmployees() {
+            localStorage.setItem('employees', JSON.stringify(employees));
+        }
+        
+        // Function to show notification
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Function to update statistics
+        function updateStats() {
+            document.getElementById('totalEmployees').textContent = employees.length;
+            document.getElementById('addedToday').textContent = stats.addedToday;
+            document.getElementById('updatedToday').textContent = stats.updatedToday;
+        }
+        
+        // Function to initialize skills dropdown
+        function initializeSkillsDropdown() {
+            const skillsOptions = document.getElementById('skillsOptions');
+            skillsOptions.innerHTML = '';
+            
+            predefinedSkills.forEach(skill => {
+                const option = document.createElement('div');
+                option.className = 'multi-select-option';
+                option.innerHTML = `
+                    <input type="checkbox" id="skill-${skill}" value="${skill}" ${currentSkills.includes(skill) ? 'checked' : ''}>
+                    <label for="skill-${skill}">${skill}</label>
+                `;
+                
+                option.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'INPUT') {
+                        const checkbox = option.querySelector('input');
+                        checkbox.checked = !checkbox.checked;
+                    }
+                    
+                    const skillValue = option.querySelector('input').value;
+                    if (option.querySelector('input').checked) {
+                        if (!currentSkills.includes(skillValue)) {
+                            currentSkills.push(skillValue);
+                        }
+                    } else {
+                        currentSkills = currentSkills.filter(skill => skill !== skillValue);
+                    }
+                    
+                    updateSkillsDisplay();
+                    updateSkillsOptions();
+                });
+                
+                skillsOptions.appendChild(option);
+            });
+            
+            updateSkillsDisplay();
+            updateSkillsOptions();
+        }
+        
+        // Function to update skills display
+        function updateSkillsDisplay() {
+            const skillsContainer = document.getElementById('skillsContainer');
+            const skillsPlaceholder = document.getElementById('skillsPlaceholder');
+            
+            skillsContainer.innerHTML = '';
+            
+            if (currentSkills.length === 0) {
+                skillsPlaceholder.textContent = 'Select skills...';
+            } else {
+                skillsPlaceholder.textContent = `${currentSkills.length} skill${currentSkills.length > 1 ? 's' : ''} selected`;
+                
+                currentSkills.forEach(skill => {
+                    const skillTag = document.createElement('div');
+                    skillTag.className = 'skill-tag';
+                    skillTag.innerHTML = `${skill} <i class="fas fa-times" onclick="removeSkill('${skill}')"></i>`;
+                    skillsContainer.appendChild(skillTag);
+                });
+            }
+        }
+        
+        // Function to update skills options
+        function updateSkillsOptions() {
+            const options = document.querySelectorAll('.multi-select-option');
+            options.forEach(option => {
+                const skill = option.querySelector('input').value;
+                if (currentSkills.includes(skill)) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+        
+        // Function to remove a skill
+        function removeSkill(skill) {
+            currentSkills = currentSkills.filter(s => s !== skill);
+            updateSkillsDisplay();
+            updateSkillsOptions();
+        }
+        
+        // Function to initialize edit skills dropdown
+        function initializeEditSkillsDropdown(employeeId) {
+            const employee = employees.find(emp => emp.id === employeeId);
+            const editSkillsOptions = document.getElementById(`editSkillsOptions${employeeId}`);
+            
+            if (!editSkillsOptions) return;
+            
+            editSkillsOptions.innerHTML = '';
+            
+            predefinedSkills.forEach(skill => {
+                const option = document.createElement('div');
+                option.className = 'multi-select-option';
+                const isSelected = employee.skills && employee.skills.includes(skill);
+                option.innerHTML = `
+                    <input type="checkbox" id="edit-skill-${employeeId}-${skill}" value="${skill}" ${isSelected ? 'checked' : ''}>
+                    <label for="edit-skill-${employeeId}-${skill}">${skill}</label>
+                `;
+                
+                option.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'INPUT') {
+                        const checkbox = option.querySelector('input');
+                        checkbox.checked = !checkbox.checked;
+                    }
+                    
+                    const skillValue = option.querySelector('input').value;
+                    if (!employee.skills) {
+                        employee.skills = [];
+                    }
+                    
+                    if (option.querySelector('input').checked) {
+                        if (!employee.skills.includes(skillValue)) {
+                            employee.skills.push(skillValue);
+                        }
+                    } else {
+                        employee.skills = employee.skills.filter(skill => skill !== skillValue);
+                    }
+                    
+                    updateEditSkillsDisplay(employeeId);
+                    updateEditSkillsOptions(employeeId);
+                });
+                
+                editSkillsOptions.appendChild(option);
+            });
+            
+            updateEditSkillsDisplay(employeeId);
+            updateEditSkillsOptions(employeeId);
+        }
+        
+        // Function to update edit skills display
+        function updateEditSkillsDisplay(employeeId) {
+            const employee = employees.find(emp => emp.id === employeeId);
+            const editSkillsContainer = document.getElementById(`editSkillsContainer${employeeId}`);
+            const editSkillsPlaceholder = document.getElementById(`editSkillsPlaceholder${employeeId}`);
+            
+            if (!editSkillsContainer) return;
+            
+            editSkillsContainer.innerHTML = '';
+            
+            if (!employee.skills || employee.skills.length === 0) {
+                editSkillsPlaceholder.textContent = 'Select skills...';
+            } else {
+                editSkillsPlaceholder.textContent = `${employee.skills.length} skill${employee.skills.length > 1 ? 's' : ''} selected`;
+                
+                employee.skills.forEach(skill => {
+                    const skillTag = document.createElement('div');
+                    skillTag.className = 'skill-tag';
+                    skillTag.innerHTML = `${skill} <i class="fas fa-times" onclick="removeEditSkill(${employeeId}, '${skill}')"></i>`;
+                    editSkillsContainer.appendChild(skillTag);
+                });
+            }
+        }
+        
+        // Function to update edit skills options
+        function updateEditSkillsOptions(employeeId) {
+            const options = document.querySelectorAll(`#editSkillsOptions${employeeId} .multi-select-option`);
+            const employee = employees.find(emp => emp.id === employeeId);
+            
+            if (!employee || !employee.skills) return;
+            
+            options.forEach(option => {
+                const skill = option.querySelector('input').value;
+                if (employee.skills.includes(skill)) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+        
+        // Function to remove a skill in edit form
+        function removeEditSkill(employeeId, skill) {
+            const employee = employees.find(emp => emp.id === employeeId);
+            if (employee && employee.skills) {
+                employee.skills = employee.skills.filter(s => s !== skill);
+                updateEditSkillsDisplay(employeeId);
+                updateEditSkillsOptions(employeeId);
+            }
+        }
+        
+        // Function to render employee table
+        function renderEmployeeTable(searchTerm = '') {
+            const tableBody = document.getElementById('employeeTableBody');
+            const noResults = document.getElementById('noResults');
+            const employeeTable = document.querySelector('.employee-table');
+            
+            tableBody.innerHTML = '';
+            
+            // Filter employees based on search term
+            let filteredEmployees = employees;
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filteredEmployees = employees.filter(employee => {
+                    return employee.name.toLowerCase().includes(term) ||
+                           employee.position.toLowerCase().includes(term) ||
+                           employee.email.toLowerCase().includes(term) ||
+                           employee.phone.includes(term) ||
+                           employee.bloodGroup.toLowerCase().includes(term) ||
+                           employee.address.toLowerCase().includes(term) ||
+                           (employee.skills && employee.skills.some(skill => skill.toLowerCase().includes(term)));
+                });
+            }
+            
+            // Show/hide table and no results message based on filtered results
+            if (filteredEmployees.length === 0) {
+                employeeTable.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                employeeTable.style.display = 'table';
+                noResults.style.display = 'none';
+                
+                filteredEmployees.forEach(employee => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            <img src="${employee.photo || 'https://randomuser.me/api/portraits/lego/0.jpg'}" alt="${employee.name}" class="employee-photo">
+                        </td>
+                        <td><span class="employee-id">#${employee.id}</span></td>
+                        <td>${employee.name}</td>
+                        <td>${employee.position}</td>
+                        <td>${employee.email}</td>
+                        <td>${employee.phone}</td>
+                        <td>${employee.dob}</td>
+                        <td>${employee.bloodGroup}</td>
+                        <td>${employee.address}</td>
+                        <td>
+                            <div class="skills-container">
+                                ${(employee.skills || []).map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary" onclick="editEmployee(${employee.id})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-danger" onclick="deleteEmployee(${employee.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <div class="edit-form" id="editForm${employee.id}">
+                                <div class="edit-photo-container">
+                                    <img src="${employee.photo || 'https://randomuser.me/api/portraits/lego/0.jpg'}" alt="${employee.name}" class="edit-photo-preview" id="editPhotoPreview${employee.id}">
+                                    <div class="edit-photo-upload">
+                                        <div class="photo-upload" id="editPhotoUpload${employee.id}">
+                                            <i class="fas fa-camera"></i>
+                                            <span>Change photo</span>
+                                            <input type="file" id="editEmpPhoto${employee.id}" class="file-input" accept="image/*">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" id="editName${employee.id}" value="${employee.name}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Position</label>
+                                    <input type="text" id="editPosition${employee.id}" value="${employee.position}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="editEmail${employee.id}" value="${employee.email}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" id="editPhone${employee.id}" value="${employee.phone}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" id="editDOB${employee.id}" value="${employee.dob}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Blood Group</label>
+                                    <select id="editBloodGroup${employee.id}">
+                                        <option value="A+" ${employee.bloodGroup === 'A+' ? 'selected' : ''}>A+</option>
+                                        <option value="A-" ${employee.bloodGroup === 'A-' ? 'selected' : ''}>A-</option>
+                                        <option value="B+" ${employee.bloodGroup === 'B+' ? 'selected' : ''}>B+</option>
+                                        <option value="B-" ${employee.bloodGroup === 'B-' ? 'selected' : ''}>B-</option>
+                                        <option value="AB+" ${employee.bloodGroup === 'AB+' ? 'selected' : ''}>AB+</option>
+                                        <option value="AB-" ${employee.bloodGroup === 'AB-' ? 'selected' : ''}>AB-</option>
+                                        <option value="O+" ${employee.bloodGroup === 'O+' ? 'selected' : ''}>O+</option>
+                                        <option value="O-" ${employee.bloodGroup === 'O-' ? 'selected' : ''}>O-</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" id="editAddress${employee.id}" value="${employee.address}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Skills</label>
+                                    <div class="multi-select-container">
+                                        <div class="multi-select-dropdown" id="editSkillsDropdown${employee.id}">
+                                            <div class="multi-select-header" id="editSkillsHeader${employee.id}">
+                                                <span id="editSkillsPlaceholder${employee.id}">Select skills...</span>
+                                                <i class="fas fa-chevron-down"></i>
+                                            </div>
+                                            <div class="multi-select-options" id="editSkillsOptions${employee.id}">
+                                                <!-- Options will be populated by JavaScript -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skills-container" id="editSkillsContainer${employee.id}"></div>
+                                </div>
+                                <button class="btn btn-primary" onclick="saveEmployee(${employee.id})">
+                                    <i class="fas fa-save"></i> Save
+                                </button>
+                                <button class="btn btn-secondary" onclick="cancelEdit(${employee.id})">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                    
+                    // Add event listener for edit photo upload
+                    const editPhotoUpload = document.getElementById(`editPhotoUpload${employee.id}`);
+                    const editEmpPhoto = document.getElementById(`editEmpPhoto${employee.id}`);
+                    const editPhotoPreview = document.getElementById(`editPhotoPreview${employee.id}`);
+                    
+                    if (editPhotoUpload) {
+                        editPhotoUpload.addEventListener('click', function() {
+                            editEmpPhoto.click();
+                        });
+                        
+                        editEmpPhoto.addEventListener('change', function(e) {
+                            if (e.target.files && e.target.files[0]) {
+                                const reader = new FileReader();
+                                reader.onload = function(event) {
+                                    editPhotoPreview.src = event.target.result;
+                                }
+                                reader.readAsDataURL(e.target.files[0]);
+                            }
+                        });
+                    }
+                    
+                    // Add event listener for edit skills dropdown
+                    const editSkillsHeader = document.getElementById(`editSkillsHeader${employee.id}`);
+                    const editSkillsOptions = document.getElementById(`editSkillsOptions${employee.id}`);
+                    
+                    if (editSkillsHeader && editSkillsOptions) {
+                        editSkillsHeader.addEventListener('click', function() {
+                            editSkillsOptions.classList.toggle('show');
+                        });
+                    }
+                });
+            }
+            
+            updateStats();
+        }
+        
+        // Photo upload functionality
+        const photoUpload = document.getElementById('photoUpload');
+        const empPhoto = document.getElementById('empPhoto');
+        const photoPreview = document.getElementById('photoPreview');
+        
+        photoUpload.addEventListener('click', function() {
+            empPhoto.click();
+        });
+        
+        empPhoto.addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    photoPreview.src = event.target.result;
+                    photoPreview.style.display = 'block';
+                    photoUpload.querySelector('i').style.display = 'none';
+                    photoUpload.querySelector('span').style.display = 'none';
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+        
+        // Function to add a new employee
+        document.getElementById('addEmployeeBtn').addEventListener('click', function() {
+            // Reset error messages
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('positionError').style.display = 'none';
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('phoneError').style.display = 'none';
+            document.getElementById('dobError').style.display = 'none';
+            document.getElementById('bloodError').style.display = 'none';
+            document.getElementById('addressError').style.display = 'none';
+            document.getElementById('skillsError').style.display = 'none';
+            document.getElementById('duplicateError').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Get form values
+            const name = document.getElementById('empName').value;
+            const position = document.getElementById('empPosition').value;
+            const email = document.getElementById('empEmail').value;
+            const phone = document.getElementById('empPhone').value;
+            const dob = document.getElementById('empDOB').value;
+            const bloodGroup = document.getElementById('empBloodGroup').value;
+            const address = document.getElementById('empAddress').value;
+            const skills = [...currentSkills];
+            const photo = photoPreview.src !== '' ? photoPreview.src : null;
+            
+            // Validate input
+            let isValid = true;
+            
+            if (name.trim() === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (position.trim() === '') {
+                document.getElementById('positionError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (email.trim() === '' || !isValidEmail(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (phone.trim() === '' || !isValidPhone(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (dob === '') {
+                document.getElementById('dobError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (bloodGroup === '') {
+                document.getElementById('bloodError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (address.trim() === '') {
+                document.getElementById('addressError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (skills.length === 0) {
+                document.getElementById('skillsError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Check for duplicate email
+            const isDuplicate = employees.some(emp => emp.email.toLowerCase() === email.toLowerCase());
+            if (isDuplicate) {
+                document.getElementById('duplicateError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Generate new employee ID (next in sequence)
+                const newId = employees.length > 0 ? Math.max(...employees.map(e => e.id)) + 1 : 1;
+                
+                // Add new employee
+                const newEmployee = {
+                    id: newId,
+                    name: name,
+                    position: position,
+                    email: email,
+                    phone: phone,
+                    dob: dob,
+                    bloodGroup: bloodGroup,
+                    address: address,
+                    skills: skills,
+                    photo: photo
+                };
+                
+                employees.push(newEmployee);
+                saveEmployees(); // Save to localStorage
+                
+                // Update statistics
+                stats.addedToday++;
+                saveStatistics(stats);
+                
+                renderEmployeeTable(document.getElementById('employeeSearch').value);
+                
+                // Reset form
+                document.getElementById('empName').value = '';
+                document.getElementById('empPosition').value = '';
+                document.getElementById('empEmail').value = '';
+                document.getElementById('empPhone').value = '';
+                document.getElementById('empDOB').value = '';
+                document.getElementById('empBloodGroup').value = '';
+                document.getElementById('empAddress').value = '';
+                photoPreview.src = '';
+                photoPreview.style.display = 'none';
+                photoUpload.querySelector('i').style.display = 'block';
+                photoUpload.querySelector('span').style.display = 'block';
+                
+                // Reset skills
+                currentSkills = [];
+                updateSkillsDisplay();
+                updateSkillsOptions();
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                showNotification('Employee added successfully!', 'success');
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000);
+            }
+        });
+        
+        // Function to edit an employee
+        function editEmployee(id) {
+            const editForm = document.getElementById(`editForm${id}`);
+            editForm.style.display = 'block';
+            
+            // Initialize skills in edit form
+            initializeEditSkillsDropdown(id);
+        }
+        
+        // Function to save edited employee
+        function saveEmployee(id) {
+            const name = document.getElementById(`editName${id}`).value;
+            const position = document.getElementById(`editPosition${id}`).value;
+            const email = document.getElementById(`editEmail${id}`).value;
+            const phone = document.getElementById(`editPhone${id}`).value;
+            const dob = document.getElementById(`editDOB${id}`).value;
+            const bloodGroup = document.getElementById(`editBloodGroup${id}`).value;
+            const address = document.getElementById(`editAddress${id}`).value;
+            const photo = document.getElementById(`editPhotoPreview${id}`).src;
+            
+            // Find employee index
+            const employeeIndex = employees.findIndex(emp => emp.id === id);
+            
+            if (employeeIndex !== -1) {
+                // Check for duplicate email (excluding current employee)
+                const isDuplicate = employees.some(emp => emp.id !== id && emp.email.toLowerCase() === email.toLowerCase());
+                
+                if (isDuplicate) {
+                    showNotification('Employee with this email already exists!', 'error');
+                    return;
+                }
+                
+                // Update employee
+                employees[employeeIndex] = {
+                    id: id,
+                    name: name,
+                    position: position,
+                    email: email,
+                    phone: phone,
+                    dob: dob,
+                    bloodGroup: bloodGroup,
+                    address: address,
+                    skills: employees[employeeIndex].skills || [],
+                    photo: photo
+                };
+                
+                saveEmployees(); // Save to localStorage
+                
+                // Update statistics
+                stats.updatedToday++;
+                saveStatistics(stats);
+                
+                renderEmployeeTable(document.getElementById('employeeSearch').value);
+                showNotification('Employee updated successfully!', 'success');
+            }
+        }
+        
+        // Function to cancel edit
+        function cancelEdit(id) {
+            const editForm = document.getElementById(`editForm${id}`);
+            editForm.style.display = 'none';
+        }
+        
+        // Function to delete an employee
+        function deleteEmployee(id) {
+            if (confirm('Are you sure you want to delete this employee?')) {
+                employees = employees.filter(emp => emp.id !== id);
+                saveEmployees(); // Save to localStorage
+                renderEmployeeTable(document.getElementById('employeeSearch').value);
+                showNotification('Employee deleted successfully!', 'success');
+            }
+        }
+        
+        // Function to validate email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Function to validate phone
+        function isValidPhone(phone) {
+            const phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phone.replace(/\s/g, ''));
+        }
+        
+        // Function to logout
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'portfolio.html';
+            }
+        }
+        
+        // Skills dropdown functionality
+        const skillsHeader = document.getElementById('skillsHeader');
+        const skillsOptions = document.getElementById('skillsOptions');
+        
+        skillsHeader.addEventListener('click', function() {
+            skillsOptions.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.multi-select-dropdown')) {
+                skillsOptions.classList.remove('show');
+                
+                // Close all edit dropdowns
+                document.querySelectorAll('.edit-form .multi-select-options').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        });
+        
+        // Search functionality for employee list
+        document.getElementById('employeeSearch').addEventListener('input', function() {
+            const searchTerm = this.value;
+            renderEmployeeTable(searchTerm);
+        });
+        
+        // Initialize the skills dropdown
+        initializeSkillsDropdown();
+        
+        // Initialize the table
+        renderEmployeeTable();
+    </script>
+</body>
+</html>
